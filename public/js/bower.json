@@ -1,0 +1,10 @@
+{
+  "name": "UWC",
+  "version": "0.0.1",
+  "dependencies": {
+    "jquery": "~2.0.3",
+    "bootstrap.css": "~2.3.2",
+    "requirejs": "~2.1.8",
+    "angular-bootstrap": "~0.6.0"
+  }
+}
