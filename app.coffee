@@ -15,19 +15,15 @@ fs = require 'fs'
 cons = require 'consolidate'
 
 #VIEWS ENGINE
-
 app.engine 'html', cons.swig
 
-#set .html as the default extension
 app.set('view engine', 'html')
 app.set('views', "#{global.path.root}/views")
 app.set('port', process.env.PORT || 3000);
 
-
 app.use express.bodyParser()
 app.use express.static("#{global.path.root}/public")
 
-# Use this error when page is not found
 class NotFound extends Error
     constructor: (path) ->
         @.name = 'Not Found'
@@ -64,7 +60,6 @@ app.Errors = {
     BadRequest: BadRequest
 }
 
-
 initRoutes = (path)->
     files = fs.readdirSync path
     for file in files
@@ -73,6 +68,22 @@ initRoutes = (path)->
             initRoutes curPath
         else
             (require curPath)(app)
+
+app.use addUserToLocals = (req, res, next) ->
+    if req.session.userId
+        userService = (require "#{global.path.common}/services/userService")
+        userService.getUser req.session.userId, (err, user)->
+            if err then return next(err)
+            if user
+                req.user = user
+                res.locals.user = user
+                return next()
+            else
+                return next()
+    else
+        res.locals.user = null
+        next()
+
 
 initRoutes "#{global.path.root}/routes"
 
