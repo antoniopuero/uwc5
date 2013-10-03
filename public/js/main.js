@@ -21,7 +21,7 @@ require.config({
 			deps: ['jquery']
 		},
 		app: {
-			deps: ['jquery']
+			deps: ['jquery', 'bootstrap']
 		},
 		angularBootstrap: {
 			deps: ['angular']
