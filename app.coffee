@@ -24,6 +24,14 @@ app.set('port', process.env.PORT || 3000);
 app.use express.bodyParser()
 app.use express.static("#{global.path.root}/public")
 
+app.use express.cookieParser('my secret')
+
+app.use express.cookieSession({
+    key: 'sid'
+    cookie:
+        maxAge: 1000 * 86400 * 365 * 5 # 5 years
+})
+
 class NotFound extends Error
     constructor: (path) ->
         @.name = 'Not Found'
