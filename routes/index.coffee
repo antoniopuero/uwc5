@@ -1,5 +1,5 @@
 module.exports = (app) ->
-    User = require "#{global.path.root}/models/User"
+    #User = require "#{global.path.root}/models/User"
 
     app.get '/', (req, res, next) ->
         # next('blaaa');
