@@ -15,7 +15,7 @@ module.exports = (grunt) ->
                 options:
                     keepSpecialComments: 0
                 files:
-                    'public/css/app.min.css' : ['public/css/*.css']
+                    'public/css/app.min.css' : ['public/css/*.css', 'public/js/components/bootstrap.css/css/bootstrap.css']
 
     grunt.loadNpmTasks 'grunt-contrib-stylus'
     grunt.loadNpmTasks 'grunt-contrib-watch'

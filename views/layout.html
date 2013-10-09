@@ -4,15 +4,24 @@
         <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
         <meta default-charset="utf-8">
         <title>UWC V</title>
-        <link rel="stylesheet" type="text/css" href="/js/components/bootstrap.css/css/bootstrap.css">
-        <link rel="stylesheet" type="text/css" href="css/main.css">
+        {% if config.env == "production"%}
 
-        {% block styles %}{%endblock%}
+        <!-- STYLES -->
+            <link rel="stylesheet" type="text/css" href="/css/app.min.css">
+        <!-- SCRIPTS -->
 
-        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-        <script src="js/main.js"></script>
+        {%else%}
 
-        {% block scripts %}{%endblock%}
+        <!-- STYLES -->
+            <link rel="stylesheet" type="text/css" href="/js/components/bootstrap.css/css/bootstrap.css">
+            <link rel="stylesheet" type="text/css" href="css/main.css">
+
+        <!-- SCRIPTS -->
+            <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+            <script src="js/main.js"></script>
+
+        {%endif%}
+
 
     </head>
     <body>

@@ -26,6 +26,8 @@ app.use express.static("#{global.path.root}/public")
 
 app.use express.cookieParser('my secret')
 
+app.locals.config = config
+
 app.use express.cookieSession({
     key: 'sid'
     cookie:
