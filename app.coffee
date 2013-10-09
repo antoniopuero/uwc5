@@ -93,7 +93,7 @@ app.use addUserToLocals = (req, res, next) ->
         next()
 
 
-# initRoutes "#{global.path.root}/routes"
+initRoutes "#{global.path.root}/routes"
 
 app.use (err, req, res, next) ->
     if req.xhr

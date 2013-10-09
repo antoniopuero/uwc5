@@ -1,11 +1,7 @@
-console.log 'bla'
 module.exports = (app) ->
-    User = require "#{global.path.root}/models/User"
-
-    # app.get '/', (req, res, next) ->
-    #     console.log 'bla'
-    #     # next('blaaa');
-    #     res.render 'index.html'
+    app.get '/', (req, res, next) ->
+        console.log 'bla'
+        res.render 'index.html'
 
     app.post '/sign-up', (req, res, next) ->
         user = new User req.body
