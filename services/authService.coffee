@@ -17,6 +17,7 @@ class authService
             if not user then return callback @Errors.USER_NOT_EXISTS
 
             user.comparePasswords password, (err, isMatch) =>
+                console.log arguments
                 if err then return callback @Errors.WRONG_PASSWORD
                 return callback null, user
 

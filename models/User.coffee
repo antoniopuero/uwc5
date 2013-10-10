@@ -25,7 +25,7 @@ UserSchema.pre 'save', (next) ->
             @password = hash
             next()
 
-UserSchema.methods.comparePasswords = (candidatePassword, callback) =>
+UserSchema.methods.comparePasswords = (candidatePassword, callback) ->
     bcrypt.compare candidatePassword, @password, (err, isMatch) =>
         if err then return callback err
         return callback null, isMatch

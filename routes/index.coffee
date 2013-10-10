@@ -14,7 +14,6 @@ module.exports = (app) ->
             if user
                 req.session.userId = user.id.toString()
                 res.apiResponse user.toJSON()
-                console.log user.toJSON()
             else
                 res.apiResponse("ok")
 
@@ -41,3 +40,7 @@ module.exports = (app) ->
 
         authService.login username, password, (err, user) ->
             return processAuthResult user, req, res, next, err
+
+    app.get '/logout', (req, res, next)->
+        req.session.userId = null
+        res.apiResponse("ok")
