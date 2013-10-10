@@ -41,6 +41,6 @@ module.exports = (app) ->
         authService.login username, password, (err, user) ->
             return processAuthResult user, req, res, next, err
 
-    app.get '/logout', (req, res, next)->
+    app.post '/logout', (req, res, next)->
         req.session.userId = null
         res.apiResponse("ok")
