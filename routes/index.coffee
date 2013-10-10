@@ -1,5 +1,6 @@
+User = require "#{global.path.root}/models/User"
+
 module.exports = (app) ->
-    User = require "#{global.path.root}/models/User"
     app.get '/', (req, res, next) ->
         console.log 'bla'
         res.render 'index.html'
