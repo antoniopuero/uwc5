@@ -1,51 +1,60 @@
 {% extends 'layout.html' %}
 
 {% block body %}
+<div class="modal hide" id="myModal">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">x</button>
+    <h3>Registration</h3>
+  </div>
+  <div class="modal-body">
+    <form method="post" action='' name="login_form">
+      <p><input type="text" class="span3" name="login" id="login" placeholder="Login"></p>
+      <p><input type="text" class="span3" name="eid" id="email" placeholder="Email"></p>
+      <p><input type="password" class="span3" name="passwd" placeholder="Password"></p>
+      <p><button type="submit" class="btn btn-primary">Register</button></p>
+    </form>
+  </div>
+  <div class="modal-footer">
+  </div>
+</div>
+
 <div id='wrapper'>
     <div class="navbar">
         <div class="navbar-inner">
             <a class="brand" href="#">UWC V</a>
             <ul class="nav pull-right">
+                <!-- AUTH FORM -->
                 <li>
-                    <a class="dropdown-toggle"
-                       data-toggle="dropdown"
-                       href="#">
-                        Login
+                    <a class="dropdown-toggle"data-toggle="dropdown"href="#">
+                        Sign In
                         <b class="caret"></b>
                     </a>
-                    <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
-                        <form action="login.php" method="post" accept-charset="UTF-8">
-                            <input id="user_username" style="margin-bottom: 15px;" type="text" name="user[username]" size="30" />
-                            <input id="user_password" style="margin-bottom: 15px;" type="password" name="user[password]" size="30" />
-                            <input id="user_remember_me" style="float: left; margin-right: 10px;" type="checkbox" name="user[remember_me]" value="1" />
-                            <label class="string optional" for="user_remember_me"> Remember me</label>
-                            <input class="btn btn-primary" style="clear: left; width: 100%; height: 32px; font-size: 13px;" type="submit" name="commit" value="Sign In" />
+
+                    <div class="span4 well dropdown-menu">
+                        <div class="alert alert-error">
+                            Incorrect Username or Password!
+                        </div>
+
+                        <form class="text-center" method="POST" action="" accept-charset="UTF-8">
+                            <input type="text" id="username" class="span4" name="username" placeholder="Username">
+                            <input type="password" id="password" class="span4" name="password" placeholder="Password">
+
+                            <label class="checkbox text-left">
+                                <input type="checkbox" name="remember" value="1"> Remember Me
+                            </label>
+
+                            <button type="submi" name="submit" class="btn btn-info btn-block">Sign In</button>
+                            <span class="">or</span>
+                            <button class="btn btn-info btn-primary btn-block" data-toggle="modal" href="#myModal" >Sign Up</button>
                         </form>
                     </div>
-                </li>
+                </li><!-- END AUTH FORM -->
+
             </ul>
         </div>
     </div>
     <div class="container-fluid">
-        Hello swig
-        <h1>Sign-in</h1>
-        <form method="POST" action="sign-in">
-            <label>Username</label>
-            <input type="text" name="username" placeholder="login">
-            <label>password</label>
-            <input type="password" name="password" placeholder="password">
-        </form>
-        <h1>Sign-up</h1>
-        <form method="POST" action="/sign-up">
-            <label>Username</label>
-            <input type="text" name="username" placeholder="name">
-            <label>password</label>
-            <input type="password" name="password" placeholder="password">
-            <label>Retry password</label>
-            <input type="password" name="retry-password" placeholder="password">
-            <input type="submit">
-        </form>
-    </div><!--top_menu-->
+    </div>
 </div>
 
 

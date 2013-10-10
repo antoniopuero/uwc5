@@ -22,6 +22,11 @@ app.set('views', "#{global.path.root}/views")
 app.set('port', process.env.PORT || 3000);
 
 app.use express.bodyParser()
+
+if config.env is 'production'
+     # gzip
+    app.use express.compress()
+
 app.use express.static("#{global.path.root}/public")
 
 app.use express.cookieParser('my secret')
