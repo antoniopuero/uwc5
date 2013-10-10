@@ -8,12 +8,15 @@ class userService
         user = new User data
         user.save (err, user) =>
             if err then return callback err
-            return callback user
+            return callback null, user
+
+    getUser: (id, callback)->
+        User.findById(id, callback)
 
     getUserByUsername: (username, callback) ->
         User.findOne { username: username }, (err, user) =>
             if err then return callback err
-            return callback user
+            return callback null, user
 
     removeUserByUsername: (username, callback) ->
         User.remove { username: username} , (err) =>

@@ -27,8 +27,7 @@ UserSchema.pre 'save', (next) ->
 
 UserSchema.methods.comparePasswords = (candidatePassword, callback) =>
     bcrypt.compare candidatePassword, @password, (err, isMatch) =>
-        if err then return next(err)
-
-        return callback(null, isMatch)
+        if err then return callback err
+        return callback null, isMatch
 
 module.exports = global.connections.common.model 'User', UserSchema

@@ -86,7 +86,7 @@ initRoutes = (path)->
 
 app.use addUserToLocals = (req, res, next) ->
     if req.session.userId
-        userService = (require "#{global.path.common}/services/userService")
+        userService = (require "#{global.path.root}/services/userService")
         userService.getUser req.session.userId, (err, user)->
             if err then return next(err)
             if user
@@ -100,11 +100,20 @@ app.use addUserToLocals = (req, res, next) ->
         next()
 
 
+app.use (req, res, next)->
+    res.apiResponse = (result, code=200, error=null)->
+        res.json(
+            code: code
+            result: result
+            error: error
+        )
+    next()
+
 initRoutes "#{global.path.root}/routes"
 
 app.use (err, req, res, next) ->
     if req.xhr
-        res.json(null, err.code || 500, err.toString() || "Unexpected error")
+        res.apiResponse(null, err.code || 500, err.toString() || "Unexpected error")
     else
         if err instanceof NotFound
             res.status(404)

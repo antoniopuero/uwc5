@@ -20,19 +20,19 @@ define(function () {
 
 		registerForm.validate({
 			rules: {
-				login: {
+				username: {
 					required: true,
 					minlength: 3
 				},
-				eid: {
+				email: {
 					required: true,
 					email: true
 				},
-				passwd: {
+				password: {
 					required: true,
 					minlength: 5
 				},
-				confirmpasswd: {
+				"confirm-password": {
 					required: true,
 					minlength: 5,
 					equalTo: '.password-field'
@@ -46,37 +46,37 @@ define(function () {
 		var loginError = loginForm.find('.alert-error'),
 			registerError = registerForm.find('.alert-error');
 
-		loginForm.find('.btn-login').submit(function (e) {
+		loginForm.submit(function (e) {
 			e.preventDefault();
-			$.post({
+			$.ajax({
 				url: '/session',
-				data: loginForm.serializeArray(),
+				type: 'POST',
+				data: loginForm.serialize(),
 				success: function (res) {
 					loginError.addClass('hidden');
 					if (res.error) {
 						loginError.removeClass('hidden');
 						return false;
 					} else {
-						//TODO
-						console.log(res);
+						window.location.href = '/'
 					}
 				}
 			});
 		});
 
-		registerForm.find('.btn-register').submit(function (e) {
+		registerForm.submit(function (e) {
 			e.preventDefault();
-			$.post({
+			$.ajax({
 				url: '/user',
-				data: registerForm.serializeArray(),
+				type: 'POST',
+				data: registerForm.serialize(),
 				success: function (res) {
-					registerErrorError.addClass('hidden');
+					registerError.addClass('hidden');
 					if (res.error) {
 						registerError.removeClass('hidden');
 						return false;
 					} else {
-						//TODO
-						console.log(res);
+						window.location.href = '/'
 					}
 				}
 			});
@@ -84,8 +84,6 @@ define(function () {
 	};
 
 
-	return {
-		validateForms: _asignValidator,
-		handleRequests: _addSessionHandlers
-	};
+	_asignValidator();
+	_addSessionHandlers();
 });
