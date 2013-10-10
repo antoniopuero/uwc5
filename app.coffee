@@ -104,7 +104,7 @@ initRoutes "#{global.path.root}/routes"
 
 app.use (err, req, res, next) ->
     if req.xhr
-        res.json({code: 500, result: null, error: "Unexptected error"})
+        res.json(null, err.code || 500, err.toString() || "Unexpected error")
     else
         if err instanceof NotFound
             res.status(404)
