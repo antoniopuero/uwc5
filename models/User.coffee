@@ -1,5 +1,6 @@
 mongoose = require 'mongoose'
 bcrypt = require 'bcrypt'
+passwordHash = require 'password-hash'
 Schema = mongoose.Schema
 SALT_WORK_FACTOR = 10
 
@@ -16,18 +17,13 @@ UserSchema = new Schema
 UserSchema.pre 'save', (next) ->
     if !@isModified('password') then return next()
 
-    bcrypt.genSalt SALT_WORK_FACTOR, (err, salt) =>
-        if err then return next(err)
+    hash = passwordHash.generate @password
 
-        bcrypt.hash @password, salt, (err, hash) =>
-            if err then return next(err)
+    @password = hash
 
-            @password = hash
-            next()
+    next()
 
 UserSchema.methods.comparePasswords = (candidatePassword, callback) ->
-    bcrypt.compare candidatePassword, @password, (err, isMatch) =>
-        if err then return callback err
-        return callback null, isMatch
+    callback null, passwordHash.verify candidatePassword, @password
 
 module.exports = global.connections.common.model 'User', UserSchema

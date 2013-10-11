@@ -12,7 +12,7 @@
     "consolidate": "~0.9.1",
     "swig": "~1.1.0",
     "mongoose": "~3.6.20",
-    "bcrypt": "~0.7.7"
+    "password-hash": "~1.2.1"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

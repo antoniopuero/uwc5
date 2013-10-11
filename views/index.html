@@ -29,6 +29,13 @@
             <ul class="nav pull-right">
                 <!-- AUTH FORM -->
                 <li>
+                  <a href="/profile">
+                    {% if user %}
+                      {{ user.username}}
+                    {% endif %}
+                  </a>
+                </li>
+                <li>
                     <a class="dropdown-toggle"data-toggle="dropdown"href="#">
                         Sign In
                         <b class="caret"></b>
