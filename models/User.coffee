@@ -1,5 +1,4 @@
 mongoose = require 'mongoose'
-bcrypt = require 'bcrypt'
 passwordHash = require 'password-hash'
 Schema = mongoose.Schema
 SALT_WORK_FACTOR = 10
