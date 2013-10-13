@@ -24,6 +24,6 @@ requirejs.config({
 	urlArgs: "bust=" + (new Date()).getTime()
 });
 
-requirejs(['app'], function (app) {
+requirejs(['cs!app'], function (app) {
 	return app.initialize();
 });
