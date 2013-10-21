@@ -20,6 +20,9 @@ module.exports = (app) ->
     app.get '/', (req, res, next) ->
         res.render 'index.html'
 
+    app.get '/dispetcher', (req, res, next) ->
+      res.render 'dispetcher.html'
+
     app.post '/user', (req, res, next) ->
         username = req.body.username
         password = req.body.password
