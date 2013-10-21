@@ -1,5 +1,4 @@
-define 'app', ["cs!account", "marionette"], (account) ->
-  console.log "init"
+define 'app', ['cs!cars', 'cs!orders', "cs!account", "marionette", ], (Cars, Orders) ->
   App = new Marionette.Application()
 
   App.addRegions
@@ -7,6 +6,15 @@ define 'app', ["cs!account", "marionette"], (account) ->
     content: "#content"
 
   App.addInitializer ->
-    Backbone.history.start();
+    Backbone.history.start()
+
+  cars = new Cars
+  cars.fetch()
+
+  orders = new Orders
+  orders.fetch()
+
+  console.log cars
+  console.log orders
 
   App

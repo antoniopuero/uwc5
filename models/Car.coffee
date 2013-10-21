@@ -14,7 +14,7 @@ CarSchema = new Schema
     status:
         type: String
         required: true
-        default: 'ready'
+        default: 'ready' # || buisy || off
 
     driverName:
         type: String

@@ -11,9 +11,19 @@ module.exports = (app) ->
             if err then return next(err)
             res.apiResponse cars
 
-        res.apiResponse
-
-    app.get "#{global.apiUrl}/car", (req, res, next) ->
+    app.post "#{global.apiUrl}/car", (req, res, next) ->
         carService.create carData, (err, car) ->
-            console.log arguments
+            if err then return next err
+            res.apiResponse car
+
+    app.put "#{global.apiUrl}/update/:carId", (req, res, next) ->
+        carService.get req.params.id, (err, car) ->
+            if err then return next err
+            unless car? then return next new Error 'sorry,the model is not found'
+            res.apiResponse car
+
+    app.delete "#{global.apiUrl}/delete/:carId", (req, res, next) ->
+        carService.delete req.params.id, (err, car) ->
+            if err then return next err
+            unless car? then return next new Error 'sorry,the model is not found'
             res.apiResponse car

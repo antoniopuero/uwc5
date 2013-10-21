@@ -13,6 +13,10 @@ UserSchema = new Schema
         type: String
         required: true
 
+    isAdmin:
+        type: Boolean
+        default: false
+
 UserSchema.pre 'save', (next) ->
     if !@isModified('password') then return next()
 
