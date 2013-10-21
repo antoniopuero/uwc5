@@ -1,5 +1,12 @@
-define 'app', ["cs!account"], (account) ->
-  initialize = ->
-    console.log "Hello world"
+define 'app', ["cs!account", "marionette"], (account) ->
+  console.log "init"
+  App = new Marionette.Application()
 
-  initialize: initialize
+  App.addRegions
+    nav: "#nav"
+    content: "#content"
+
+  App.addInitializer ->
+    Backbone.history.start();
+
+  App
