@@ -33,7 +33,7 @@
 </div>
 
 <div id='wrapper'>
-  <div class="navbar">
+  <div class="navbar" id="nav">
     <div class="navbar-inner">
       <a class="brand" href="#">UWC V</a>
       <ul class="nav pull-right" id="auth">
@@ -71,9 +71,30 @@
       </ul>
     </div>
   </div>
-  <div class="container-fluid">
-  </div>
+  <div class="container-fluid" id="content">
+      {% if user %}
+      <div class="row-fluid">
+          <div class="span4">
+              Hallo!<br>
+              You can take a car simply by filling the form fields.<br>
+              Thank You for choosing us;)
+          </div>
+          <div class="span3">
+              <form method="post" id="get-car">
+                  <fieldset>
+                      <legend>Take a car</legend>
+                      <input type="text" name="begin" placeholder="from">
+                      <input type="text" nname="end" placeholder="where">
+                      <input type="text" nname="phone" placeholder="phone">
+                      <button type="submit" class="btn btn-info">Get a car</button>
+                  </fieldset>
+              </form>
+          </div>
+      </div>
+      {% else %}
+      <div class="row-fluid">
+          Please, sign in or sign up for taking a car!
+      </div>
+      {% endif %}
 </div>
-
-
 {% endblock %}
