@@ -11,10 +11,20 @@ module.exports = (app) ->
         orderService.getAll (err, orders) ->
             if err then return next(err)
             res.apiResponse orders
-        res.apiResponse
 
-    app.get "#{global.apiUrl}/order", (req, res, next) ->
-        orderService.create orderData, (err, order) ->
-            console.log arguments
+    app.post "#{global.apiUrl}/order", (req, res, next) ->
+        orderService.create carData, (err, order) ->
+            if err then return next err
             res.apiResponse order
 
+    app.put "#{global.apiUrl}/update/:carId", (req, res, next) ->
+        orderService.get req.params.id, (err, order) ->
+            if err then return next err
+            unless order? then return next new Error 'sorry,the model is not found'
+            res.apiResponse order
+
+    app.delete "#{global.apiUrl}/delete/:carId", (req, res, next) ->
+        orderService.delete req.params.id, (err, order) ->
+            if err then return next err
+            unless order? then return next new Error 'sorry,the model is not found'
+            res.apiResponse order
