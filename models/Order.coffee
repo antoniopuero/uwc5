@@ -23,7 +23,7 @@ OrderSchema = new Schema
     status:
         type: String
         required: true
-        default: 'ready'
+        default: 'ready' # || assigned || completed
 
     time:
         type: String
@@ -36,19 +36,21 @@ OrderSchema = new Schema
     carId:
         type: ObjectId
 
-
-OrderSchema.methods.ready = (callback) ->
-    @status = 'ready'
-    @save callback
-
 OrderSchema.methods.getCarsNearby = (callback) ->
     Car.near(@startPoint).exec callback
 
-OrderSchema.methods.assignCar = (carId, callback) ->
-    Car.get carId, (err, car) ->
-        if err then return callback err
-        unless car? then return callback(new Error('car with this id is not exists'))
+OrderSchema.methods.assignCar = (car, callback) ->
         @carId = car.id
+        @status = 'assigned'
+        @save callback
+
+OrderSchema.methods.ready = (callback) ->
+        @status = 'ready'
+        @carId = null
+        @save callback
+
+OrderSchema.methods.complete = (callback) ->
+        @status = 'completed'
         @save callback
 
 module.exports = global.connections.common.model 'Order', OrderSchema

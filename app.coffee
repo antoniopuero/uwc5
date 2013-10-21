@@ -114,7 +114,7 @@ app.use (req, res, next)->
 initRoutes "#{global.path.root}/routes"
 
 app.use (err, req, res, next) ->
-    if req.xhr
+    if true or req.xhr
         res.apiResponse(null, err.code || 500, err.toString() || "Unexpected error")
     else
         if err instanceof NotFound

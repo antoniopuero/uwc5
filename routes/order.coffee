@@ -1,4 +1,5 @@
 orderService = require "#{global.path.root}/services/orderService"
+carService = require "#{global.path.root}/services/carService"
 
 module.exports = (app) ->
     orderData =
@@ -28,3 +29,32 @@ module.exports = (app) ->
             if err then return next err
             unless order? then return next new Error 'sorry,the model is not found'
             res.apiResponse order
+
+    app.get "#{global.apiUrl}/order/:orderId/car/:carId/asign", (req, res, next) ->
+        orderService.get req.params.orderId, (err, order) ->
+            if err then return next err
+            unless order? then return next new Error 'sorry,the order is not found'
+
+            carService.get req.params.carId, (err, car) ->
+                if err then return next err
+                unless car? then return next new Error 'sorry,the car is not found'
+                order.assignCar car, (err, result) ->
+                    if err then return next err
+                    res.apiResponse result
+
+    app.get "#{global.apiUrl}/order/:orderId/ready", (req, res, next) ->
+        orderService.get req.params.orderId, (err, order) ->
+            if err then return next err
+            unless order? then return next new Error 'sorry,the order is not found'
+            order.ready (err, result) ->
+                if err then return next err
+                res.apiResponse result
+
+    app.get "#{global.apiUrl}/order/:orderId/complete", (req, res, next) ->
+        orderService.get req.params.orderId, (err, order) ->
+            console.log arguments
+            if err then return next err
+            unless order? then return next new Error 'sorry,the order is not found'
+            order.complete (err, result) ->
+                if err then return next err
+                res.apiResponse result

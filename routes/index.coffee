@@ -30,7 +30,6 @@ module.exports = (app) ->
         authService.register req.body, (err, user) ->
             return processAuthResult user, req, res, next, err
 
-
     app.post '/session', (req, res, next) ->
         username = req.body.username
         password = req.body.password
