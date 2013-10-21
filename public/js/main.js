@@ -14,12 +14,6 @@ requirejs.config({
 		bootstrap: {
 			deps: ['jquery']
 		},
-		app: {
-			deps: ['jquery', 'bootstrap', 'marionette']
-		},
-		account: {
-			deps: ['jquery', 'validator']
-		},
 		validator: {
 			deps: ['jquery']
 		},
