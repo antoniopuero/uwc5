@@ -5,6 +5,8 @@ global.path =
 
 global.config = (require "#{global.path.root}/config")
 
+global.apiUrl = global.config.apiUrl
+
 global.connections = {
     common: mongoose.createConnection(config.dbUri)
 }

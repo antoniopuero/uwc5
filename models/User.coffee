@@ -23,7 +23,6 @@ UserSchema.pre 'save', (next) ->
     next()
 
 UserSchema.methods.comparePasswords = (candidatePassword, callback) ->
-    console.log passwordHash.verify candidatePassword, @password
     callback null, passwordHash.verify candidatePassword, @password
 
 module.exports = global.connections.common.model 'User', UserSchema
