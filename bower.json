@@ -4,7 +4,7 @@
   "dependencies": {
     "jquery": "~2.0.3",
     "jquery.validation": "~1.11.1",
-    "bootstrap.css": "~2.3.2",
+    "bootstrap.css": "~3.0.0",
     "requirejs": "~2.1.8",
     "bootstrap-stylus": "~3.0.0",
     "backbone.marionette": "~1.1.0"

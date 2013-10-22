@@ -14,7 +14,7 @@ module.exports = (app) ->
             res.apiResponse orders
 
     app.post "#{global.apiUrl}/order", (req, res, next) ->
-        orderService.create carData, (err, order) ->
+        orderService.create req.body, (err, order) ->
             if err then return next err
             res.apiResponse order
 

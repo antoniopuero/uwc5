@@ -6,29 +6,21 @@
             MAP
         </div>
     </div>
-    <div class="row dispetcher-form">
-        <div class="span12">
-            <form method="post" action="">
-                <input type="text" name="start" placeholder="Start point">
-                <input type="text" name="end" placeholder="End point">
-                <input type="text" name="userid" placeholder="User identity">
-                TIME: <select>
-                    <option>00:00</option>
-                    <option>00:30</option>
-                    <option>01:00</option>
-                    <option>01:30</option>
-                </select>
-                <button type="submit" class="btn">CREATE</button>
-            </form>
-        </div>
-    </div>
+
+        <form id="admin-form" class="form-inline admin-form">
+            <input type="text" class="input-large" name="startPlace" placeholder="Откуда ехать">
+            <input type="text" class="input-large" name="endPlace" placeholder="Куда ехать">
+            <input type="text" class="input-small" name="clientName" placeholder="Имя клиента">
+            <input type="text" class="input-mini" name="date" placeholder="Дата">
+            <input type="text" class="input-mini" name="price" placeholder="Цена">
+
+            <input type="button" class="js-create-order btn pull-right" value="Создать">
+
+        </form>
+
     <div class="row">
         <div class="span8">
-            <table class="table table-bordered">
-               <tr class="table-head"><th>Откуда</th><th>Куда</th><th>Кто</th><th>Когда</th><th>Цена</th><th></th></tr>
-               <tr><td>прт Голосеевский 15</td><td>клуб Арена</td><td>№12</td><td>20:00</td><td>67грн</td><td>КНОПОЧКИ</td></tr>
-               <tr><td>прт Голосеевский 15</td><td>клуб Арена</td><td>№12</td><td>20:00</td><td>67грн</td><td>КНОПОЧКИ</td></tr>
-            </table>
+            <div id="orders"></div>
         </div>
         <div class="span4">
             <table class="table table-bordered">

@@ -1,9 +1,9 @@
 requirejs.config({
-	baseUrl: 'js',
+	baseUrl: 'js/',
 	paths: {
 		jquery: 'components/jquery/jquery',
 		validator: 'components/jquery.validation/jquery.validate',
-		bootstrap: 'components/bootstrap.css/js/bootstrap',
+		bootstrap: 'components/bootstrap/dist/js/bootstrap',
         underscore: "components/underscore/underscore",
         backbone: "components/backbone/backbone",
         marionette: "components/backbone.marionette/lib/backbone.marionette",
@@ -35,7 +35,7 @@ requirejs.config({
 	urlArgs: "bust=" + (new Date()).getTime()
 });
 
-requirejs(['cs!app'], function (App) {
+requirejs(['cs!app', 'marionette', 'cs!account'], function (App) {
     console.log("start");
     return App.start();
 });
