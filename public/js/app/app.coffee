@@ -1,4 +1,4 @@
-define 'app', ['cs!cars', 'cs!orders', "cs!account", "marionette", ], (Cars, Orders) ->
+define 'app', ["cs!adminLayout", "cs!account", "marionette"], (AdminLayout) ->
   App = new Marionette.Application()
 
   App.addRegions
@@ -8,13 +8,8 @@ define 'app', ['cs!cars', 'cs!orders', "cs!account", "marionette", ], (Cars, Ord
   App.addInitializer ->
     Backbone.history.start()
 
-  cars = new Cars
-  cars.fetch()
-
-  orders = new Orders
-  orders.fetch()
-
-  console.log cars
-  console.log orders
+  App.addInitializer ->
+    App.layout = new AdminLayout
+    App.content.show App.layout
 
   App
