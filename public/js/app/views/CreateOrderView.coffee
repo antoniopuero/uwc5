@@ -8,19 +8,32 @@ define [
     events:
       "click .js-create-order": "createOrder"
 
+    ui:
+      startPlace: 'input[name="startPlace"]'
+      endPlace: 'input[name="endPlace"]'
+      price: 'input[name="price"]'
+      date: 'input[name="date"]'
+      name: 'input[name="clientName"]'
+
     initialize: ->
       console.log Order
 
     createOrder: ->
       orderData =
-        startPointTitle: @$el.find('input[name="startPlace"]').val()
-        endPointTitle: @$el.find('input[name="endPlace"]').val()
-        price: @$el.find('input[name="price"]').val()
+        startPointTitle: @ui.startPlace.val()
+        endPointTitle: @ui.endPlace.val()
+        price: @ui.price.val()
         name: 'not loggined'
-        date: @$el.find('input[name="date"]').val()
+        date: @ui.date.val()
         startPoint: [30, 40]
         endPoint: [25, 34]
 
       order = new Order orderData
       @collection.add order
       order.save()
+
+      @ui.startPlace.val('')
+      @ui.endPlace.val('')
+      @ui.price.val('')
+      @ui.date.val('')
+      @ui.name.val('')
