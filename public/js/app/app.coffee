@@ -16,6 +16,7 @@ define 'app', [
       App.layout = new AdminLayout
       App.content.show App.layout
 
+
   App.addInitializer ->
     Backbone.history.start()
 
