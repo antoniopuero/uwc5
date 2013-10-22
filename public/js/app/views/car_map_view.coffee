@@ -18,5 +18,8 @@ define 'carMapView', ['marionette'], (Marionette) ->
         position: new google.maps.LatLng p[0], p[1]
         map: @map
         title: car.get('driverName')
+        icon: '/i/taxi.png'
+
+      window.marker = car.marker
 
   CarMapView
