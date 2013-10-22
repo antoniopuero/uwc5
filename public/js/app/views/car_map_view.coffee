@@ -12,6 +12,11 @@ define 'carMapView', ['marionette'], (Marionette) ->
       @map = new google.maps.Map(@el, mapOptions)
 
     appendHtml: (collectionView, itemView, index) ->
-      1
+      car = itemView.model
+      p = car.get('point')
+      car.marker = new google.maps.Marker
+        position: new google.maps.LatLng p[0], p[1]
+        map: @map
+        title: car.get('driverName')
 
   CarMapView
