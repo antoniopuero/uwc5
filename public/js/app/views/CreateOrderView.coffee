@@ -23,6 +23,7 @@ define [
             order = new Order orderData
 
             order.save {},
-                success: =>
+                success: (resp) =>
+                    console.log resp
                     @options.collection.push order
 

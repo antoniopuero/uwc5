@@ -104,6 +104,7 @@ app.use addUserToLocals = (req, res, next) ->
 
 app.use (req, res, next)->
     res.apiResponse = (result, code=200, error=null)->
+        res.status code
         res.json(
             code: code
             result: result
