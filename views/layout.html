@@ -24,14 +24,84 @@
 
     </head>
     <body>
+        <div class="modal hide" id="myModal">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">x</button>
+            <h3>Registration</h3>
+          </div>
+          <div class="modal-body">
+            <div class="alert alert-error hidden">
+              Something went wrong:'( Try one more time!
+            </div>
+            <form method="post" action='' name="login_form" id="register">
+              <p><input type="text" class="span3" name="username" placeholder="Username"></p>
+              <p><input type="text" class="span3" name="email" placeholder="Email"></p>
+              <p><input type="password" class="span3 password-field" name="password" placeholder="Password"></p>
+              <p><input type="password" class="span3" name="confirm-password" placeholder="Confirm password"></p>
+              <p>
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" name="isAdmin"> Admin ?
+                  </label>
+                </div>
+              </p>
+              <p>
+                <button type="submit" class="btn btn-primary btn-register">Register</button>
+              </p>
+
+            </form>
+          </div>
+          <div class="modal-footer">
+          </div>
+        </div>
+
         <header>
+          <div class="navbar" id="nav">
+            <div class="navbar-inner">
+              <a class="brand" href="#">TaxiSky</a>
+              <ul class="nav pull-right" id="auth">
+              <!-- AUTH FORM -->
+              {% if user %}
+                <li>
+                  <a href="/profile">{{ user.username }}</a>
+                </li>
+
+                <li>
+                  <a class="logout" href="#logout">Logout</a>
+                </li>
+              {% else %}
+                <li>
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    Sign In
+                    <b class="caret"></b>
+                  </a>
+
+                  <div class="span4 well dropdown-menu">
+                    <form class="text-center" method="POST" action="" accept-charset="UTF-8" id="login">
+                      <div class="alert alert-error hidden">
+                        Incorrect Username or Password!
+                      </div>
+                      <input type="text" class="span4" name="username" placeholder="Username">
+                      <input type="password" class="span4" name="password" placeholder="Password">
+                      <button type="submit" class="btn btn-info btn-block btn-login">Sign In</button>
+                      <div class="text-center">or</div>
+                      <button class="btn btn-info btn-primary btn-block" data-toggle="modal" href="#myModal">Sign Up</button>
+                    </form>
+                  </div>
+                </li>
+              {% endif %}
+              <!-- END AUTH FORM -->
+              </ul>
+            </div>
+          </div>
         </header>
 
-        <div class="content">
+        <div class="container">
             {%block body%}{%endblock%}
         </div>
 
         <footer>
         </footer>
+
     </body>
 </html>
