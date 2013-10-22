@@ -1,15 +1,36 @@
-define 'app', ["cs!adminLayout", "cs!account", "marionette"], (AdminLayout) ->
-  App = new Marionette.Application()
+define 'app', [
+    'cs!cars',
+    'cs!orders',
+    'cs!/js/app/views/OrderListView',
+    'cs!/js/app/views/CreateOrderView'
+    ], (Cars, Orders, OrderListView, CreateOrderView) ->
 
-  App.addRegions
-    nav: "#nav"
-    content: "#content"
+    App = new Marionette.Application()
 
-  App.addInitializer ->
-    Backbone.history.start()
+    App.addRegions
+        nav: "#nav"
+        content: "#content"
+        orders: "#orders"
+        cars: "#cars"
 
-  App.addInitializer ->
-    App.layout = new AdminLayout
-    App.content.show App.layout
 
-  App
+    App.addInitializer ->
+        cars = new Cars
+        orders = new Orders
+
+        orders.on 'reset', () ->
+            App.orders.show orderListView
+
+        orderListView = new OrderListView collection: orders
+
+        cars.fetch reset: true
+        orders.fetch reset: true
+
+        createOrderView = new CreateOrderView
+            el: "#admin-form"
+            collection: orders
+
+    App.addInitializer ->
+        Backbone.history.start()
+
+    App
