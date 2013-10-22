@@ -11,4 +11,7 @@ define 'carMapView', ['marionette'], (Marionette) ->
 
       @map = new google.maps.Map(@el, mapOptions)
 
+    appendHtml: (collectionView, itemView, index) ->
+      1
+
   CarMapView
