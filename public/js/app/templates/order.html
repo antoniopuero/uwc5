@@ -1,5 +1,9 @@
 <script type="text/template">
   <td><%= startPointTitle %></td>
   <td><%= endPointTitle %></td>
-  <td><div class="btn delete">delete</div></td>
+  <td>
+    <div data-toggle="tooltip" title="Delete order" class="btn delete">delete</div>
+    <div data-toggle="tooltip" title="Assign to first in order driver" class="btn assign">→</div>
+    <div data-toggle="tooltip" title="Assign to chosen driver" class="btn assign-choose">✱</div>
+  </td>
 </script>

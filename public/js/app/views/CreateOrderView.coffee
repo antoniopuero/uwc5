@@ -10,8 +10,14 @@ define [
       "click .js-cancel-order": "toggleForm"
       "click .js-show-form": "toggleForm"
 
+    ui:
+      startPlace: 'input[name="startPlace"]'
+      endPlace: 'input[name="endPlace"]'
+      price: 'input[name="price"]'
+      date: 'input[name="date"]'
+      name: 'input[name="clientName"]'
+
     initialize: ->
-      @initSearch()
 
     onShow: ->
       @initSearch()
@@ -22,11 +28,11 @@ define [
 
     createOrder: ->
       orderData =
-        startPointTitle: @$el.find('input[name="startPlace"]').val()
-        endPointTitle: @$el.find('input[name="endPlace"]').val()
-        price: @$el.find('input[name="price"]').val()
+        startPointTitle: @ui.startPlace.val()
+        endPointTitle: @ui.endPlace.val()
+        price: @ui.price.val()
         name: 'not loggined'
-        date: @$el.find('input[name="date"]').val()
+        date: @ui.date.val()
         startPoint: [30, 40]
         endPoint: [25, 34]
 
@@ -35,6 +41,13 @@ define [
         success: =>
           @collection.add order
           @toggleForm()
+          
+      @ui.startPlace.val('')
+      @ui.endPlace.val('')
+      @ui.price.val('')
+      @ui.date.val('')
+      @ui.name.val('')
+
 
     initSearch: ->
       @searchInput = $(".typeahead", @$el)
@@ -50,8 +63,9 @@ define [
                   prediction.description
                 )
           updater: (item) =>
-            geocoder.geocode { address: item }, (results, status) =>
-            #   # if (status == google.maps.GeocoderStatus.OK)
-            #     # @map.fitBounds(results[0].geometry.viewport)
-            #     # @searchInput.val('')
+            #geocoder.geocode { address: item }, (results, status) =>
+            
             item;
+
+
+           
