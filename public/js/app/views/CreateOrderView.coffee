@@ -3,6 +3,8 @@ define [
   'cs!order'
 ], (OrderView, Order) ->
   CreateOrderView = Marionette.ItemView.extend
+    template: '#create-order-template'
+
     events:
       "click .js-create-order": "createOrder"
 
@@ -21,9 +23,5 @@ define [
         endPoint: [25, 34]
 
       order = new Order orderData
-
-      order.save {},
-        success: (resp) =>
-          console.log resp
-          @options.collection.push order
-
+      @collection.add(order)
+      order.save()

@@ -13,14 +13,14 @@ define 'adminLayout', [
       carMap: '#car-map-wrap'
       orders: "#orders"
       cars: "#cars"
-      adminForm: "#admin-form"
+      createOrder: "#create-order"
 
     onRender: ->
       cars = new Cars
       orders = new Orders
 
-      #@orders.show new OrderListView collection: orders
-      #@adminForm.show new CreateOrderView collection: orders
+      @orders.show new OrderListView collection: orders
+      @createOrder.show new CreateOrderView collection: orders
       @carMap.show new CarMapView
 
       cars.fetch reset: true
