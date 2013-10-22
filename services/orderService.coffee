@@ -12,6 +12,6 @@ class OrderService
         Order.find {}, callback
 
     remove: (id, callback) ->
-        Order.remove { id: id } , callback
+        Order.remove { _id: id } , callback
 
 module.exports = new OrderService
