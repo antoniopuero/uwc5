@@ -4,7 +4,7 @@ requirejs.config({
 		// THIRD PART
         jquery: 'components/jquery/jquery',
 		validator: 'components/jquery.validation/jquery.validate',
-		bootstrap: 'components/bootstrap/dist/js/bootstrap',
+		bootstrap: 'components/bootstrap.css/js/bootstrap',
         underscore: "components/underscore/underscore",
         backbone: "components/backbone/backbone",
         marionette: "components/backbone.marionette/lib/backbone.marionette",
@@ -44,7 +44,6 @@ requirejs.config({
 	urlArgs: "bust=" + (new Date()).getTime()
 });
 
-requirejs(['cs!app', 'jquery'], function (App, $) {
 requirejs(['cs!app', 'marionette', 'cs!account'], function (App) {
     console.log("start");
     return $(function(){

@@ -1,5 +1,5 @@
 define 'users', ['backbone', 'cs!user'], (Backbone, User)->
-  class Orders extends Backbone.Collection
+  class Users extends Backbone.Collection
     model: User
     url: 'api/users'
 
