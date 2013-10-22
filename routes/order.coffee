@@ -25,7 +25,7 @@ module.exports = (app) ->
             res.apiResponse order
 
     app.delete "#{global.apiUrl}/orders/:carId", (req, res, next) ->
-        orderService.delete req.params.id, (err, order) ->
+        orderService.remove req.params.id, (err, order) ->
             if err then return next err
             unless order? then return next new Error 'sorry,the model is not found'
             res.apiResponse order
