@@ -1,8 +1,8 @@
 define [
-  'cs!/js/app/views/OrderView',
+  'cs!/js/app/views/OrderView'
   'cs!order'
 ], (OrderView, Order) ->
-  CreateOrderView = Marionette.ItemView.extend
+  Marionette.ItemView.extend
     template: '#create-order-template'
 
     events:
@@ -12,7 +12,6 @@ define [
       console.log Order
 
     createOrder: ->
-      alert('1212')
       orderData =
         startPointTitle: @$el.find('input[name="startPlace"]').val()
         endPointTitle: @$el.find('input[name="endPlace"]').val()
@@ -23,5 +22,5 @@ define [
         endPoint: [25, 34]
 
       order = new Order orderData
-      @collection.add(order)
+      @collection.add order
       order.save()
