@@ -12,6 +12,6 @@ class CarService
         Car.find {}, callback
 
     remove: (id, callback) ->
-        Car.remove { id: id } , callback
+        Car.remove { _id: id } , callback
 
 module.exports = new CarService

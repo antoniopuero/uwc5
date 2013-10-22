@@ -16,13 +16,13 @@ module.exports = (app) ->
             if err then return next err
             res.apiResponse car
 
-    app.put "#{global.apiUrl}/update/:carId", (req, res, next) ->
+    app.put "#{global.apiUrl}/cars/:carId", (req, res, next) ->
         carService.get req.params.id, (err, car) ->
             if err then return next err
             unless car? then return next new Error 'sorry,the model is not found'
             res.apiResponse car
 
-    app.delete "#{global.apiUrl}/delete/:carId", (req, res, next) ->
+    app.delete "#{global.apiUrl}/cars/:carId", (req, res, next) ->
         carService.delete req.params.id, (err, car) ->
             if err then return next err
             unless car? then return next new Error 'sorry,the model is not found'
