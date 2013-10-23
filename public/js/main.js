@@ -5,7 +5,6 @@ requirejs.config({
         jquery: 'components/jquery/jquery',
 		validator: 'components/jquery.validation/jquery.validate',
 		bootstrap: 'components/bootstrap.css/js/bootstrap',
-        autotype: 'components/autotype/index',
         timepicker: 'components/bootstrap-timepicker/js/bootstrap-timepicker',
         underscore: "components/underscore/underscore",
         backbone: "components/backbone/backbone",
