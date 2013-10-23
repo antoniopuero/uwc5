@@ -5,7 +5,6 @@ requirejs.config({
         jquery: 'components/jquery/jquery',
 		validator: 'components/jquery.validation/jquery.validate',
 		bootstrap: 'components/bootstrap.css/js/bootstrap',
-        autotype: 'components/autotype/index',
         timepicker: 'components/bootstrap-timepicker/js/bootstrap-timepicker',
         underscore: "components/underscore/underscore",
         backbone: "components/backbone/backbone",
@@ -26,6 +25,7 @@ requirejs.config({
         carMapView: 'app/views/car_map_view',
         carListView: 'app/views/car_list_view',
         carView: 'app/views/car_view',
+        dummyView: 'app/views/dummy_view',
         createOrderView: 'app/views/CreateOrderView'
 	},
 	shim: {
