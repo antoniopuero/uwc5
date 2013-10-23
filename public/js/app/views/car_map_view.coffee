@@ -7,7 +7,7 @@ define 'carMapView', ['marionette', 'cs!carView'], (Marionette, CarView) ->
       @points = []
       console.log 'car-map'
 
-    rerender: ->
+    renderPoints: ->
       _.each @points, (point) =>
         car = point.car
 
@@ -38,7 +38,7 @@ define 'carMapView', ['marionette', 'cs!carView'], (Marionette, CarView) ->
       @map = new google.maps.Map(@el, mapOptions)
 
     onRender: ->
-      @rerender()
+      @renderPoints()
 
     onBeforeItemAdded: (itemView) ->
       car = itemView.model
@@ -49,11 +49,11 @@ define 'carMapView', ['marionette', 'cs!carView'], (Marionette, CarView) ->
 
       @listenTo car, 'highlight', =>
         point.highlight = true
-        @rerender()
+        @renderPoints()
 
       @listenTo car, 'unhighlight', =>
         point.highlight = false
-        @rerender()
+        @renderPoints()
 
       @points.push point
 

@@ -1,12 +1,13 @@
 define 'adminLayout', [
   'cs!cars'
   'cs!orders'
+  'cs!order'
   'cs!carMapView'
   'cs!carListView'
   'cs!/js/app/views/OrderListView'
   'cs!/js/app/views/CreateOrderView'
   'marionette'
-], (Cars, Orders, CarMapView, CarListView, OrderListView, CreateOrderView) ->
+], (Cars, Orders, Order, CarMapView, CarListView, OrderListView, CreateOrderView) ->
   class AdminLayout extends Marionette.Layout
     template: '#admin-template'
 
@@ -27,6 +28,13 @@ define 'adminLayout', [
       @carMap.show new CarMapView collection: cars
       @cars.show new CarListView collection: cars
       @createOrder.show new CreateOrderView collection: orders
+
+      console.log 3
+      App.socket.on 'order-create', (data) ->
+        orders.add new Order(data)
+
+      App.socket.on 'order-delete', (data) ->
+        orders.remove new Order(data)
 
       cars.fetch reset: true
       orders.fetch reset: true

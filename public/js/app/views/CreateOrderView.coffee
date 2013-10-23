@@ -143,18 +143,18 @@ define [
       service = new google.maps.places.AutocompleteService()
 
       @searchInput.typeahead
-          source: (query, process) =>
-            service.getPlacePredictions { input: query }, (predictions, status) =>
-              if status is google.maps.places.PlacesServiceStatus.OK
-                process($.map predictions, (prediction) =>
-                  prediction.description
-                )
-          updater: (item) =>
-            #geocoder.geocode { address: item }, (results, status) =>
+        source: (query, process) =>
+          service.getPlacePredictions { input: query }, (predictions, status) =>
+            if status is google.maps.places.PlacesServiceStatus.OK
+              process($.map predictions, (prediction) =>
+                prediction.description
+              )
+        updater: (item) =>
+          #geocoder.geocode { address: item }, (results, status) =>
 
-            item;
+            item
 
-    resetForm: () ->
+    resetForm: ->
       @ui.startPlace.val('')
       @ui.endPlace.val('')
       @ui.price.val('')
