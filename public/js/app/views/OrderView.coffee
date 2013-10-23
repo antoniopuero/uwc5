@@ -4,7 +4,6 @@ define ['text!/js/app/templates/order.html'], (orderTemplate) ->
     template: orderTemplate
 
     initialize: ->
-        console.log @model
     events:
       'click .delete': 'destroy'
 

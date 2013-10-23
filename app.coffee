@@ -11,14 +11,14 @@ mongoose = require 'mongoose'
 
 global.io = io
 
-setInterval ->
-    global.io.sockets.emit 'order-create', {order: 'orderCreate'}
-    global.io.sockets.emit 'order-delete', {order: 'orderDelete'}
-    global.io.sockets.emit 'order-update', {order: 'orderUpdate'}
-    global.io.sockets.emit 'car-create', {order: 'carCreate'}
-    global.io.sockets.emit 'car-delete', {order: 'carDelete'}
-    global.io.sockets.emit 'car-update', {order: 'carUpdate'}
-, 1000
+# setInterval ->
+    # global.io.sockets.emit 'order-create', {order: 'orderCreate'}
+    # global.io.sockets.emit 'order-delete', {order: 'orderDelete'}
+    # global.io.sockets.emit 'order-update', {order: 'orderUpdate'}
+    # global.io.sockets.emit 'car-create', {order: 'carCreate'}
+    # global.io.sockets.emit 'car-delete', {order: 'carDelete'}
+    # global.io.sockets.emit 'car-update', {order: 'carUpdate'}
+# , 1000
 
 global.path =
     root: require('path').normalize("#{__dirname}")
@@ -119,7 +119,10 @@ app.use addUserToLocals = (req, res, next) ->
 
 
 app.use (req, res, next)->
-    res.apiResponse = (result, code=200, error=null)->
+    res.apiResponse = (result, code=200, error=null, params)->
+        if params?.io
+            global.io.sockets.emit params.io, result
+
         res.status code
         res.json(
             code: code

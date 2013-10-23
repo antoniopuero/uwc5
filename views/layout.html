@@ -26,6 +26,14 @@
             console.log(data);
           });
 
+          socket.on('order-update', function (data) {
+            console.log(data);
+          });
+
+          socket.on('order-delete', function (data) {
+            console.log(data);
+          });
+
         </script>
 
         <script data-main="js/main" src="/js/require.js"></script>
