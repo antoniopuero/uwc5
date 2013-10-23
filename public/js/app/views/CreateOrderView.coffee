@@ -27,6 +27,7 @@ define [
 
     onShow: ->
       @initSearch()
+      @ui.date.timepicker()
       # @createOrder()
       # @calculateOrder()
 

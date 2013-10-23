@@ -5,6 +5,8 @@ requirejs.config({
         jquery: 'components/jquery/jquery',
 		validator: 'components/jquery.validation/jquery.validate',
 		bootstrap: 'components/bootstrap.css/js/bootstrap',
+        autotype: 'components/autotype/index',
+        timepicker: 'components/bootstrap-timepicker/js/bootstrap-timepicker',
         underscore: "components/underscore/underscore",
         backbone: "components/backbone/backbone",
         marionette: "components/backbone.marionette/lib/backbone.marionette",
@@ -23,12 +25,16 @@ requirejs.config({
         adminLayout: 'app/views/admin_layout',
         carMapView: 'app/views/car_map_view',
         carListView: 'app/views/car_list_view',
-        carView: 'app/views/car_view'
+        carView: 'app/views/car_view',
+        createOrderView: 'app/views/CreateOrderView'
 	},
 	shim: {
 		bootstrap: {
 			deps: ['jquery']
 		},
+        timepicker: {
+          deps: ["jquery"]
+        },
 		validator: {
 			deps: ['jquery']
 		},
@@ -44,7 +50,7 @@ requirejs.config({
 	urlArgs: "bust=" + (new Date()).getTime()
 });
 
-requirejs(['cs!app/app', 'marionette', 'cs!account'], function (App) {
+requirejs(['cs!app/app', 'marionette', 'cs!account', 'timepicker'], function (App) {
     console.log("start");
     return $(function(){
         App.start();
