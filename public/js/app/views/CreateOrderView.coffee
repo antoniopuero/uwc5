@@ -143,8 +143,6 @@ define [
       geocoder = new google.maps.Geocoder()
       service = new google.maps.places.AutocompleteService()
 
-
-      console.log google.maps.places.ComponentRestrictions
       @searchInput.typeahead
         source: (query, process) =>
           service.getPlacePredictions {
