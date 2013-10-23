@@ -31,7 +31,7 @@ OrderSchema = new Schema
         required: true
         default: 'ready' # || assigned || completed
 
-    time:
+    date:
         type: String
         required: true
         default: 'now'
