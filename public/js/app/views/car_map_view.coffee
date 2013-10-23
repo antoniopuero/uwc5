@@ -1,7 +1,7 @@
-define 'carMapView', ['marionette', 'cs!carView'], (Marionette, CarView) ->
+define 'carMapView', ['marionette', 'cs!dummyView'], (Marionette, DummyView) ->
   class CarMapView extends Marionette.CollectionView
     id: 'car-map'
-    itemView: CarView
+    itemView: DummyView
 
     initialize: ->
       @points = []
@@ -27,6 +27,12 @@ define 'carMapView', ['marionette', 'cs!carView'], (Marionette, CarView) ->
           point.highlight = false
 
         point.marker = new google.maps.Marker options
+
+        google.maps.event.addListener point.marker, 'mouseover', ->
+          point.car.trigger('mouseover-on-map')
+
+        google.maps.event.addListener point.marker, 'mouseout', ->
+          point.car.trigger('mouseout-on-map')
 
     onBeforeRender: ->
       mapOptions =

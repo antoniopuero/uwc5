@@ -7,3 +7,4 @@ label.error{color:#c7254e;background:#f9f2f4}
 .create-order{cursor:pointer}
 .admin__buttons-submit{float:right;margin-right:235px}
 #car-map img{max-width:none}
+#cars tr:hover > td,#cars tr.selected > td{background-color:#d9edf7;-moz-transition:all .8s ease;-o-transition:all .8s ease;-webkit-transition:all .8s ease}

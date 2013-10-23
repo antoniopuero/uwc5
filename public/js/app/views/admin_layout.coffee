@@ -29,7 +29,6 @@ define 'adminLayout', [
       @cars.show new CarListView collection: cars
       @createOrder.show new CreateOrderView collection: orders
 
-      console.log 3
       App.socket.on 'order-create', (data) ->
         orders.add new Order(data)
 
