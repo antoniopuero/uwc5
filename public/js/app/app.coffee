@@ -1,10 +1,4 @@
-define [
-  'cs!cars',
-  'cs!orders',
-  'cs!adminLayout',
-  'cs!app/views/OrderListView',
-  'cs!app/views/CreateOrderView'
-], (Cars, Orders, AdminLayout, OrderListView, CreateOrderView) ->
+define ['cs!adminLayout'], (AdminLayout) ->
   App = new Marionette.Application()
 
   App.addRegions
@@ -16,8 +10,11 @@ define [
       App.layout = new AdminLayout
       App.content.show App.layout
 
-
   App.addInitializer ->
     Backbone.history.start()
+
+  App.socket = io.connect('http://localhost:3000')
+
+  window.App = App
 
   App

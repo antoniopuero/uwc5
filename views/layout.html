@@ -20,23 +20,6 @@
         <!-- SCRIPTS -->
         <script src="https://maps.googleapis.com/maps/api/js?v=3.11&libraries=geometry,places&sensor=true&language=en"></script>
         <script src="/socket.io/socket.io.js"></script>
-        <script>
-          var socket = io.connect('http://localhost:3000');
-
-          socket.on('order-create', function (data) {
-            console.log(data);
-          });
-
-          socket.on('order-update', function (data) {
-            console.log(data);
-          });
-
-          socket.on('order-delete', function (data) {
-            console.log(data);
-          });
-
-        </script>
-
         <script data-main="js/main" src="/js/require.js"></script>
 
         {%endif%}
