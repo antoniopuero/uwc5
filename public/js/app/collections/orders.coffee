@@ -3,7 +3,10 @@ define 'orders', ['backbone', 'cs!order'], (Backbone, Order)->
     model: Order
     url: 'api/orders'
 
-    parse: (resp) ->
-      resp.result
+    parse: (attrs, options) ->
+        if attrs.result
+            attrs = attrs.result
+
+        super attrs, options
 
   Orders

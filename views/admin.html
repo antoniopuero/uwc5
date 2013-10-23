@@ -19,22 +19,29 @@
 
 <script type="text/template" id="create-order-template">
 
-  <div class="well well-small text-center create-order js-show-form">
+  <div class="well well-small text-center create-order js-create-order js-show-form">
    <strong class="text-info">Создать заказ</strong>
+  </div>
+
+  <div class="alert alert-error js-error-provider hide">
+    <a class="close js-hide-error" data-dismiss="">×</a>
+    <strong>Error ! </strong><span class="js-error-text"> This is a fatal error.</span>
   </div>
 
   <form id="admin-form" class="form-horizontal admin-form hide">
     <div class="control-group">
       <label class="control-label" for="inputEmail">Куда</label>
       <div class="controls">
-        <input type="text" class="input-xxlarge typeahead" name="endPlace" placeholder="Куда ехать">
+        <input type="text" class="input-xxlarge typeahead" name="endPlace" placeholder="Куда ехать"
+        >
       </div>
     </div>
 
     <div class="control-group">
       <label class="control-label" for="inputEmail">Откуда</label>
       <div class="controls">
-        <input type="text" class="input-xxlarge typeahead" name="startPlace" placeholder="Откуда ехать">
+        <input type="text" class="input-xxlarge typeahead" name="startPlace" placeholder="Откуда ехать"
+        >
       </div>
     </div>
 
@@ -62,8 +69,12 @@
 
     <div class="control-group">
       <div class="controls">
-        <input type="button" class="js-create-order btn" value="Поехали">
-        <input type="button" class="js-cancel-order btn" value="Охрана, отменa">
+        <input type="button" class="js-calculate-order btn btn-info" value="Рассчитать">
+        <input type="button" class="js-next-path btn btn-info hide" value="">
+        <div class="admin__buttons-submit">
+          <input type="button" class="js-save-order btn btn-success" value="Поехали">
+          <input type="button" class="js-cancel-order btn btn-danger" value="Охрана, отменa">
+        </div>
       </div>
     </div>
 

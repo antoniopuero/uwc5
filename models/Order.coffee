@@ -20,6 +20,12 @@ OrderSchema = new Schema
         type: String
         required: true
 
+    path:
+        type: {}
+
+    distance:
+        type: Number
+
     status:
         type: String
         required: true
