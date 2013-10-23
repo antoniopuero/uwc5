@@ -9,8 +9,6 @@ requirejs.config({
         backbone: "components/backbone/backbone",
         marionette: "components/backbone.marionette/lib/backbone.marionette",
 
-        // ETC
-        app: 'app/app',
         account: 'app/account',
 
         // MODELS
@@ -46,7 +44,7 @@ requirejs.config({
 	urlArgs: "bust=" + (new Date()).getTime()
 });
 
-requirejs(['cs!app', 'marionette', 'cs!account'], function (App) {
+requirejs(['cs!app/app', 'marionette', 'cs!account'], function (App) {
     console.log("start");
     return $(function(){
         App.start();

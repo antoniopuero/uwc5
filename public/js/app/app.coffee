@@ -1,9 +1,9 @@
-define 'app', [
+define [
   'cs!cars',
   'cs!orders',
   'cs!adminLayout',
-  'cs!/js/app/views/OrderListView',
-  'cs!/js/app/views/CreateOrderView'
+  'cs!app/views/OrderListView',
+  'cs!app/views/CreateOrderView'
 ], (Cars, Orders, AdminLayout, OrderListView, CreateOrderView) ->
   App = new Marionette.Application()
 
