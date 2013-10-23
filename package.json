@@ -12,7 +12,8 @@
     "consolidate": "~0.9.1",
     "swig": "~1.1.0",
     "mongoose": "~3.6.20",
-    "password-hash": "~1.2.1"
+    "password-hash": "~1.2.1",
+    "socket.io": "~0.9.16"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

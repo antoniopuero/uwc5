@@ -1,4 +1,24 @@
+express = require 'express'
+app = module.exports = express()
+
+server = require('http').createServer(app)
+
+io = require('socket.io').listen(server);
+
+fs = require 'fs'
+cons = require 'consolidate'
 mongoose = require 'mongoose'
+
+global.io = io
+
+setInterval ->
+    global.io.sockets.emit 'order-create', {order: 'orderCreate'}
+    global.io.sockets.emit 'order-delete', {order: 'orderDelete'}
+    global.io.sockets.emit 'order-update', {order: 'orderUpdate'}
+    global.io.sockets.emit 'car-create', {order: 'carCreate'}
+    global.io.sockets.emit 'car-delete', {order: 'carDelete'}
+    global.io.sockets.emit 'car-update', {order: 'carUpdate'}
+, 1000
 
 global.path =
     root: require('path').normalize("#{__dirname}")
@@ -11,10 +31,6 @@ global.connections = {
     common: mongoose.createConnection(config.dbUri)
 }
 
-express = require 'express'
-app = module.exports = express()
-fs = require 'fs'
-cons = require 'consolidate'
 
 #VIEWS ENGINE
 app.engine 'html', cons.swig
@@ -129,5 +145,5 @@ app.use (err, req, res, next) ->
             res.status(500)
             res.render 'errors/500.html'
 
-app.listen(app.get('port'))
+server.listen(app.get('port'))
 console.log 'Listening on port ' + app.get 'port'
