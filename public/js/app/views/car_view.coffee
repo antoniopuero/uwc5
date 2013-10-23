@@ -3,6 +3,11 @@ define 'carView', ['marionette', 'text!/js/app/templates/car.html'], (Marionette
     tagName: 'tr'
     template: carTemplate
 
-    onRender: ->
+    events:
+      mouseenter: 'highlight'
+      mouseleave: 'unhighlight'
+
+    highlight: -> @model.trigger 'highlight'
+    unhighlight: -> @model.trigger 'unhighlight'
 
   CarView

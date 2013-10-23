@@ -10,6 +10,9 @@ define 'adminLayout', [
   class AdminLayout extends Marionette.Layout
     template: '#admin-template'
 
+    initialize: ->
+      console.log 'init layout'
+
     regions:
       carMap: '#car-map-wrap'
       orders: "#orders"
