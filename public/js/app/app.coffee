@@ -1,4 +1,4 @@
-define ['cs!adminLayout'], (AdminLayout) ->
+define ['cs!adminLayout', 'cs!userLayout'], (AdminLayout, UserLayout) ->
   App = new Marionette.Application()
 
   App.addRegions
@@ -7,10 +7,12 @@ define ['cs!adminLayout'], (AdminLayout) ->
 
   App.addInitializer ->
     if $('#admin').length
-
-
       App.layout = new AdminLayout
-      App.content.show App.layout
+
+    if $('#user').length
+      App.layout = new UserLayout
+
+    App.content.show App.layout
 
   App.addInitializer ->
     Backbone.history.start()

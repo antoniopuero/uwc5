@@ -2,7 +2,7 @@ define [
   'cs!/js/app/views/OrderView'
   'cs!order'
 ], (OrderView, Order) ->
-  Marionette.ItemView.extend
+  class CreateOrderView extends Marionette.ItemView
     template: '#create-order-template'
 
     events:
@@ -27,7 +27,8 @@ define [
 
     onShow: ->
       @initSearch()
-      @ui.date.timepicker showMeridian: false
+      if @ui.date.length
+        @ui.date.timepicker showMeridian: false
 
       # @createOrder()
       # @calculateDuration()
@@ -40,7 +41,7 @@ define [
       @ui.errorProvider.show()
 
     createOrder: ->
-      @toggleForm();
+      @toggleForm()
       @model = new Order
 
       @model.on 'change:price', (model, price) =>
@@ -49,7 +50,7 @@ define [
       @model.on 'invalid', (model, error) =>
         @errorProvider error
 
-    calculateDuration: () ->
+    calculateDuration: ->
       unless @ui.endPlace.val() && @ui.startPlace.val()
         @errorProvider 'Set START and DEST points'
         return
@@ -189,7 +190,7 @@ define [
       price
 
     initSearch: ->
-      @searchInput = $(".typeahead", @$el)
+      @searchInput = @$(".typeahead")
 
       geocoder = new google.maps.Geocoder()
       service = new google.maps.places.AutocompleteService()
@@ -215,3 +216,6 @@ define [
       @ui.price.val('')
       @ui.date.val('')
       @ui.phone.val('')
+
+
+  CreateOrderView
