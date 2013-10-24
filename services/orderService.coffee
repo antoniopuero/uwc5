@@ -12,7 +12,8 @@ class OrderService
         Order.find {}, callback
 
     update: (data, callback) ->
-        orderService.get data.id, (err, order) ->
+        console.log data
+        Order.findById data._id, (err, order) ->
             if err then return callback err
             unless order? then return callback new Error 'sorry,the model is not found'
             order.set data

@@ -18,7 +18,7 @@ define [
       endPlace: 'input[name="endPlace"]'
       price: 'input[name="price"]'
       date: 'input[name="date"]'
-      name: 'input[name="clientName"]'
+      phone: 'input[name="phone"]'
       errorProvider: '.js-error-provider'
 
     initialize: ->
@@ -88,19 +88,42 @@ define [
       updatePath = =>
         @model.updatePathFromGoogle App.map.line.getPath().getArray()
 
-      if App.map.line then App.map.line.setMap null
-      App.map.line = new google.maps.Polyline
+      polylineOptions =
         path: @model.pathToGoogle()
         geodesic: true
         strokeColor: '#FF0000'
-        strokeOpacity: 1.0
-        strokeWeight: 2
+        strokeOpacity: 0.8
+        strokeWeight: 4
+        editable: true
+        map: App.map
 
-      App.map.line.setEditable(true)
+      startPointOptions =
+        position: new google.maps.LatLng @model.get('startPoint')[0], @model.get('startPoint')[1]
+        map: App.map
+        icon:
+          url: '/i/start.png'
+          size:
+            width: 50
+            height: 30
+
+      endPointOptions =
+        position: new google.maps.LatLng @model.get('endPoint')[0], @model.get('endPoint')[1]
+        map: App.map
+        icon:
+          url: '/i/finish.png'
+          size:
+            width: 66
+            height: 28
+
+      if App.map.line then App.map.line.setMap null
+      if App.map.startPoint then App.map.startPoint.setMap null
+      if App.map.endPoint then App.map.endPoint.setMap null
+
+      App.map.line = new google.maps.Polyline polylineOptions
+
       google.maps.event.addListener App.map.line.getPath(), "set_at", updatePath
       google.maps.event.addListener App.map.line.getPath(), "insert_at", updatePath
       google.maps.event.addListener App.map.line.getPath(), "remove_at", updatePath
-      App.map.line.setMap App.map
 
     saveOrder: ->
       @model.set @prepareModelData()
@@ -121,7 +144,7 @@ define [
       data = {}
       data.startPointTitle = @ui.startPlace.val()
       data.endPointTitle = @ui.endPlace.val()
-      data.name = @ui.name.val()
+      data.phone = @ui.phone.val()
       data.price = @ui.price.val()
       data.date = @ui.date.val()
 
@@ -192,4 +215,4 @@ define [
       @ui.endPlace.val('')
       @ui.price.val('')
       @ui.date.val('')
-      @ui.name.val('')
+      @ui.phone.val('')

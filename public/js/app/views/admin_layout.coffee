@@ -12,7 +12,6 @@ define 'adminLayout', [
     template: '#admin-template'
 
     initialize: ->
-      console.log 'init layout'
 
     regions:
       map: '#map'

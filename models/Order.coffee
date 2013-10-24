@@ -26,10 +26,17 @@ OrderSchema = new Schema
     distance:
         type: Number
 
+    phone:
+        type: String
+
     status:
         type: String
         required: true
         default: 'ready' # || assigned || completed
+
+    price:
+        type: String
+        required: true
 
     date:
         type: String

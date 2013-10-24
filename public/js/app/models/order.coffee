@@ -14,10 +14,11 @@ define ['backbone'], (Backbone) ->
 
     validate: (attrs, options) ->
         isValid = true
-        requiredFields = ['startPointTitle', 'endPointTitle', 'startPoint', 'endPoint','distance', 'price', 'date', 'name']
+        requiredFields = ['startPointTitle', 'endPointTitle', 'startPoint', 'endPoint','distance', 'price', 'date', 'phone']
 
         _.each requiredFields, (attr) =>
             unless @get(attr)
+                console.log attr + ' are INVALID'
                 isValid = false
 
         if isValid then return false else return 'FILL all form fields or CALCULATE route'
@@ -36,7 +37,6 @@ define ['backbone'], (Backbone) ->
     pathFromGoogle: (googlePath) ->
         result = []
         _.each googlePath, (position) ->
-            console.log position.jb
             result.push [position.jb, position.kb]
         result
 
