@@ -47,13 +47,12 @@ define [
       @model = new Order
 
       @model.on 'change:price', (model, price) =>
-        console.log arguments
         @ui.price.val price + ' грн'
 
       @model.on 'invalid', (model, error) =>
         @errorProvider error
 
-    calculateDuration: ->
+    calculateDuration: (callback) ->
       unless @ui.endPlace.val() && @ui.startPlace.val()
         @errorProvider 'Set START and DEST points'
         return
@@ -83,6 +82,9 @@ define [
           @drawOrderLine()
 
           @ui.errorProvider.hide()
+
+          if typeof callback is 'function'
+            callback()
 
     clearLine: ->
       App.map.line.setMap null
@@ -148,7 +150,7 @@ define [
       data.startPointTitle = @ui.startPlace.val()
       data.endPointTitle = @ui.endPlace.val()
       data.phone = @ui.phone.val()
-      data.price = @ui.price.val()
+      data.price = parseInt @ui.price.val(), 10
       data.date = @ui.date.val()
 
       data
