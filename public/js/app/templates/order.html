@@ -1,9 +1,11 @@
 <script type="text/template">
-  <td><%= startPointTitle %></td>
-  <td><%= endPointTitle %></td>
+  <td class="title js-start-point-title"><%= startPointTitle %></td>
+  <td class="title js-end-point-title"><%= endPointTitle %></td>
+  <td class="small js-date"><%= date %></td>
+  <td class="small js-price"><%= price%> грн</td>
+  <td class="phone js-phone"><%= phone %></td>
   <td>
-    <div data-toggle="tooltip" title="Delete order" class="btn delete">delete</div>
-    <div data-toggle="tooltip" title="Assign to first in order driver" class="btn assign">→</div>
-    <div data-toggle="tooltip" title="Assign to chosen driver" class="btn assign-choose">✱</div>
+    <i class="icon-arrow-right pull right"></i>
   </td>
+  <td class="mini"> <i class="icon-trash delete"></i> </td>
 </script>

@@ -44,7 +44,6 @@ define [
       @model = new Order
 
       @model.on 'change:price', (model, price) =>
-        console.log arguments
         @ui.price.val price + ' грн'
 
       @model.on 'invalid', (model, error) =>
@@ -145,7 +144,7 @@ define [
       data.startPointTitle = @ui.startPlace.val()
       data.endPointTitle = @ui.endPlace.val()
       data.phone = @ui.phone.val()
-      data.price = @ui.price.val()
+      data.price = parseInt @ui.price.val(), 10
       data.date = @ui.date.val()
 
       data
