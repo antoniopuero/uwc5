@@ -20,7 +20,7 @@
 <script type="text/template" id="create-order-template">
 
   <div class="well well-small text-center create-order js-create-order js-show-form">
-   <strong class="text-info">Создать заказ</strong>
+    <strong class="text-info">Создать заказ</strong>
   </div>
 
   <div class="alert alert-error js-error-provider hide">
@@ -30,25 +30,28 @@
 
   <form id="admin-form" class="form-horizontal admin-form hide">
     <div class="control-group">
-      <label class="control-label" for="inputEmail">Куда</label>
-      <div class="controls">
-        <input type="text" class="input-xxlarge typeahead" name="endPlace" placeholder="Куда ехать"
-        value="Голосеевская улица"
-        >
-      </div>
-    </div>
-
-    <div class="control-group">
       <label class="control-label" for="inputEmail">Откуда</label>
+
       <div class="controls">
         <input type="text" class="input-xxlarge typeahead" name="startPlace" placeholder="Откуда ехать"
-        value="Майдан независимости"
-        >
+               value="Майдан независимости"
+                >
       </div>
     </div>
 
     <div class="control-group">
-      <label class="control-label" for="inputEmail">Имя</label>
+      <label class="control-label" for="inputEmail">Куда</label>
+
+      <div class="controls">
+        <input type="text" class="input-xxlarge typeahead" name="endPlace" placeholder="Куда ехать"
+               value="Голосеевская улица"
+                >
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label" for="inputEmail">Телефон</label>
+
       <div class="controls">
         <input type="text" class="input-xxlarge" name="phone" placeholder="Телефон клиента">
       </div>
@@ -56,6 +59,7 @@
 
     <div class="control-group">
       <label class="control-label" for="inputEmail">Когда</label>
+
       <div class="controls bootstrap-timepicker">
         <input type="text" class="input-xxlarge" name="date" placeholder="Дата поездки">
       </div>
@@ -63,6 +67,7 @@
 
     <div class="control-group">
       <label class="control-label " for="inputEmail">Цена</label>
+
       <div class="controls">
         <input type="text" class="input-xxlarge" name="price" placeholder="Цена поездки">
       </div>
@@ -73,6 +78,7 @@
       <div class="controls">
         <input type="button" class="js-calculate-order btn btn-info" value="Рассчитать">
         <input type="button" class="js-next-path btn btn-info hide" value="">
+
         <div class="admin__buttons-submit">
           <input type="button" class="js-save-order btn btn-success" value="Поехали">
           <input type="button" class="js-cancel-order btn btn-danger" value="Охрана, отменa">
@@ -82,9 +88,10 @@
 
   </form>
 </script>
+
 <script type="text/template" id="side-logger">
-    <div class="logger">
-        <div class="triangle-button"></div>
-        <div class="log-text"></div>
-    </div>
+  <div class="logger">
+    <div class="triangle-button"></div>
+    <div class="log-text"></div>
+  </div>
 </script>

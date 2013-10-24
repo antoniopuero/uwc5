@@ -22,11 +22,13 @@ requirejs.config({
 
         // VIEWS
         adminLayout: 'app/views/admin_layout',
+        userLayout: 'app/views/user_layout',
         carMapView: 'app/views/car_map_view',
         carListView: 'app/views/car_list_view',
         carView: 'app/views/car_view',
         dummyView: 'app/views/dummy_view',
-        createOrderView: 'app/views/CreateOrderView'
+        createOrderView: 'app/views/CreateOrderView',
+        getCarView: 'app/views/get_car_view'
 	},
 	shim: {
 		bootstrap: {
