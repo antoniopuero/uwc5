@@ -19,3 +19,4 @@ label.error{color:#c7254e;background:#f9f2f4}
 #orders table .phone{max-width:40px}
 #orders table .mini{max-width:5px}
 #cars{width:240px;float:right}
+#map{-webkit-box-shadow:3px 3px 15px rgba(0,0,0,0.5);box-shadow:3px 3px 15px rgba(0,0,0,0.5)}

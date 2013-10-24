@@ -54,7 +54,7 @@ define 'navView', ['marionette', 'jquery', 'validator', 'bootstrap'], (Marionett
 
 
       loginError = loginForm.find(".alert-error")
-      registerError = registerForm.find(".alert-error")
+      registerError = @$("#myModal .alert-error")
       loginForm.submit (e) ->
         e.preventDefault()
         $.ajax
@@ -68,6 +68,8 @@ define 'navView', ['marionette', 'jquery', 'validator', 'bootstrap'], (Marionett
               false
             else
               window.location.href = "/"
+          error: (res) ->
+            loginError.text(res.responseJSON.error).removeClass('hidden')
 
       registerForm.submit (e) ->
         e.preventDefault()
@@ -82,5 +84,8 @@ define 'navView', ['marionette', 'jquery', 'validator', 'bootstrap'], (Marionett
               false
             else
               window.location.href = "/"
+          error: (res) ->
+            console.log(res)
+            registerError.text(res.responseJSON.error).removeClass('hidden')
 
   NavView
