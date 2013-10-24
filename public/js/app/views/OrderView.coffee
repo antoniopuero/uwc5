@@ -16,10 +16,17 @@ define ['text!/js/app/templates/order.html'], (orderTemplate) ->
     initialize: ->
     events:
       'click .delete': 'destroy'
+
       'click' : ->
+        console.log 'click'
         @model.trigger 'click', @model
+
       'keydown': ->
         console.log 'press'
+
+      'click .js-edit': (e) ->
+        App.map.line.setEditable true if App.map.line
+        e.stopPropagation()
 
     destroy: ->
       @model.destroy()

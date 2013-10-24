@@ -41,7 +41,7 @@ define ['cs!/js/app/views/OrderView'], (OrderView) ->
         strokeColor: '#FF0000'
         strokeOpacity: 0.8
         strokeWeight: 4
-        editable: true
+        editable: false
         map: App.map
 
       startPointOptions =
@@ -69,3 +69,13 @@ define ['cs!/js/app/views/OrderView'], (OrderView) ->
       App.map.endPoint = new google.maps.Marker endPointOptions
 
       subscribeToWaypoints()
+
+      startLatLng = new google.maps.LatLng order.get('startPoint')[0], order.get('startPoint')[1]
+      endLatLng = new google.maps.LatLng order.get('endPoint')[0], order.get('endPoint')[1]
+
+      bound = new google.maps.LatLngBounds()
+
+      bound.extend startLatLng
+      bound.extend endLatLng
+
+      App.map.fitBounds bound
