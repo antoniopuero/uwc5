@@ -50,7 +50,7 @@ define [
       @model.on 'invalid', (model, error) =>
         @errorProvider error
 
-    calculateDuration: ->
+    calculateDuration: (callback) ->
       unless @ui.endPlace.val() && @ui.startPlace.val()
         @errorProvider 'Set START and DEST points'
         return
@@ -80,6 +80,9 @@ define [
           @drawOrderLine()
 
           @ui.errorProvider.hide()
+
+          if typeof callback is 'function'
+            callback()
 
     clearLine: ->
       App.map.line.setMap null
