@@ -1,114 +1,114 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
-        <meta default-charset="utf-8">
-        <title>UWC V</title>
-        {% if config.env == "production"%}
+<head>
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+  <meta default-charset="utf-8">
+  <title>UWC V</title>
+  {% if config.env == "production"%}
+  <!-- STYLES -->
+  <link rel="stylesheet" type="text/css" href="/css/app.min.css">
+  <!-- SCRIPTS -->
+  {%else%}
+  <!-- STYLES -->
+  <link rel="stylesheet" type="text/css" href="/js/components/bootstrap.css/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="/js/components/bootstrap-timepicker/css/bootstrap-timepicker.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
 
-        <!-- STYLES -->
-            <link rel="stylesheet" type="text/css" href="/css/app.min.css">
-        <!-- SCRIPTS -->
+  <!-- SCRIPTS -->
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.11&libraries=geometry,places&sensor=true&language=en"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script data-main="js/main" src="/js/require.js"></script>
+  {%endif%}
+</head>
+<body>
+<header id="nav"></header>
 
-        {%else%}
+<div class="container">
+  {%block body%}{%endblock%}
 
-        <!-- STYLES -->
-            <link rel="stylesheet" type="text/css" href="/js/components/bootstrap.css/css/bootstrap.css">
-            <link rel="stylesheet" type="text/css" href="/js/components/bootstrap-timepicker/css/bootstrap-timepicker.css">
-            <link rel="stylesheet" type="text/css" href="css/main.css">
+  <div id="content"></div>
+</div>
 
-        <!-- SCRIPTS -->
-        <script src="https://maps.googleapis.com/maps/api/js?v=3.11&libraries=geometry,places&sensor=true&language=en"></script>
-        <script src="/socket.io/socket.io.js"></script>
-        <script data-main="js/main" src="/js/require.js"></script>
-
-        {%endif%}
+<footer></footer>
 
 
-    </head>
-    <body>
-        <div class="modal hide" id="myModal">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">x</button>
-            <h3>Registration</h3>
+<script type="text/template" id="nav-template">
+  <div class="navbar">
+    <div class="modal hide" id="myModal">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">x</button>
+        <h3>Registration</h3>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-error hidden">
+          Something went wrong:'( Try one more time!
+        </div>
+        <form method="post" action='' name="login_form" id="register">
+          <p><input type="text" class="span3" name="username" placeholder="Username"></p>
+
+          <p><input type="text" class="span3" name="email" placeholder="Email"></p>
+
+          <p><input type="password" class="span3 password-field" name="password" placeholder="Password"></p>
+
+          <p><input type="password" class="span3" name="confirm-password" placeholder="Confirm password"></p>
+
+          <p>
+
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="isAdmin"> Admin ?
+            </label>
           </div>
-          <div class="modal-body">
-            <div class="alert alert-error hidden">
-              Something went wrong:'( Try one more time!
-            </div>
-            <form method="post" action='' name="login_form" id="register">
-              <p><input type="text" class="span3" name="username" placeholder="Username"></p>
-              <p><input type="text" class="span3" name="email" placeholder="Email"></p>
-              <p><input type="password" class="span3 password-field" name="password" placeholder="Password"></p>
-              <p><input type="password" class="span3" name="confirm-password" placeholder="Confirm password"></p>
-              <p>
-                <div class="checkbox">
-                  <label>
-                    <input type="checkbox" name="isAdmin"> Admin ?
-                  </label>
-                </div>
-              </p>
-              <p>
-                <button type="submit" class="btn btn-primary btn-register">Register</button>
-              </p>
+          </p>
+          <p>
+            <button type="submit" class="btn btn-primary btn-register">Register</button>
+          </p>
 
+        </form>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+
+    <div class="navbar-inner">
+      <a class="brand" href="/">TaxiSky</a>
+      <ul class="nav pull-right" id="auth">
+        <!-- AUTH FORM -->
+        {% if user %}
+        <li>
+          <a href="/profile">{{ user.username }}</a>
+        </li>
+
+        <li>
+          <a class="logout" href="#logout">Logout</a>
+        </li>
+        {% else %}
+        <li>
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            Sign In
+            <b class="caret"></b>
+          </a>
+
+          <div class="span4 well dropdown-menu">
+            <form class="text-center" method="POST" action="" accept-charset="UTF-8" id="login">
+              <div class="alert alert-error hidden">
+                Incorrect Username or Password!
+              </div>
+              <input type="text" class="span4" name="username" placeholder="Username">
+              <input type="password" class="span4" name="password" placeholder="Password">
+              <button type="submit" class="btn btn-info btn-block btn-login">Sign In</button>
+              <div class="text-center">or</div>
+              <button class="btn btn-info btn-primary btn-block" data-toggle="modal" href="#myModal">Sign Up</button>
             </form>
           </div>
-          <div class="modal-footer">
-          </div>
-        </div>
+        </li>
+        {% endif %}
+        <!-- END AUTH FORM -->
+      </ul>
+    </div>
+  </div>
+</script>
 
-        <header>
-          <div class="navbar" id="nav">
-            <div class="navbar-inner">
-              <a class="brand" href="/">TaxiSky</a>
-              <ul class="nav pull-right" id="auth">
-              <!-- AUTH FORM -->
-              {% if user %}
-                <li>
-                  <a href="/profile">{{ user.username }}</a>
-                </li>
-
-                <li>
-                  <a class="logout" href="#logout">Logout</a>
-                </li>
-              {% else %}
-                <li>
-                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    Sign In
-                    <b class="caret"></b>
-                  </a>
-
-                  <div class="span4 well dropdown-menu">
-                    <form class="text-center" method="POST" action="" accept-charset="UTF-8" id="login">
-                      <div class="alert alert-error hidden">
-                        Incorrect Username or Password!
-                      </div>
-                      <input type="text" class="span4" name="username" placeholder="Username">
-                      <input type="password" class="span4" name="password" placeholder="Password">
-                      <button type="submit" class="btn btn-info btn-block btn-login">Sign In</button>
-                      <div class="text-center">or</div>
-                      <button class="btn btn-info btn-primary btn-block" data-toggle="modal" href="#myModal">Sign Up</button>
-                    </form>
-                  </div>
-                </li>
-              {% endif %}
-              <!-- END AUTH FORM -->
-              </ul>
-            </div>
-          </div>
-        </header>
-
-        <div class="container">
-            {%block body%}{%endblock%}
-
-            <div id="content"></div>
-        </div>
-
-
-
-        <footer>
-        </footer>
-
-    </body>
+</body>
 </html>
+
