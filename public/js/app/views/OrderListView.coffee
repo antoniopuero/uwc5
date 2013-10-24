@@ -8,7 +8,6 @@ define ['cs!/js/app/views/OrderView'], (OrderView) ->
 
     onShow: ->
       @initOrderEvents()
-      console.log OrderView
 
     initOrderEvents: ->
       @listenTo @collection, 'click', (order) ->
@@ -16,11 +15,9 @@ define ['cs!/js/app/views/OrderView'], (OrderView) ->
 
     @drawOrderPath: (order)->
       updatePath = ->
-        console.log 'update path'
         order.updatePathFromGoogle App.map.line.getPath().getArray()
 
         order.on 'invalid', (model, error) ->
-
           console.log arguments
 
         order.save()

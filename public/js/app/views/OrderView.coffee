@@ -14,11 +14,12 @@ define ['text!/js/app/templates/order.html', 'marionette'], (orderTemplate, Mari
       'contenteditable': true
 
     initialize: ->
+      @listenTo @model, 'change', @render
+
     events:
       'click .delete': 'destroy'
 
       'click' : ->
-        console.log 'click'
         @model.trigger 'click', @model
 
       'keydown': ->
