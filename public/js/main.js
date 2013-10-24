@@ -29,7 +29,8 @@ requirejs.config({
         carView: 'app/views/car_view',
         dummyView: 'app/views/dummy_view',
         createOrderView: 'app/views/CreateOrderView',
-        getCarView: 'app/views/get_car_view'
+        getCarView: 'app/views/get_car_view',
+        modalView: 'app/views/modal_view'
 	},
 	shim: {
 		bootstrap: {

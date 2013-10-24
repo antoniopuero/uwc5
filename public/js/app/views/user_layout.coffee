@@ -10,6 +10,7 @@ define 'userLayout', [
     regions:
       map: '#map'
       getCar: "#get-car"
+      modal: "modal"
 
     onShow: ->
       cars = new Cars

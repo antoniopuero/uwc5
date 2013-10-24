@@ -1,7 +1,6 @@
-define 'getCarView', ['cs!createOrderView', 'cs!order', 'marionette'], (CreateOrderView, Order, Marionette) ->
+define 'getCarView', ['cs!modalView','cs!createOrderView', 'cs!order', 'marionette'], (modalView, CreateOrderView, Order, Marionette) ->
   class GetCarView extends CreateOrderView
     template: '#get-car-template'
-
     events: ->
       'click .send': 'send'
 
@@ -12,9 +11,8 @@ define 'getCarView', ['cs!createOrderView', 'cs!order', 'marionette'], (CreateOr
         @model.save @model.toJSON(),
           validate: false
           success: =>
-            alert @model.get('price')
+            App.layout.modal.show new modalView(model: @model)
             @resetForm()
-
     prepareModelData: ->
       data =
         startPointTitle: @ui.startPlace.val()
