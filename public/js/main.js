@@ -23,6 +23,7 @@ requirejs.config({
         // VIEWS
         adminLayout: 'app/views/admin_layout',
         userLayout: 'app/views/user_layout',
+        navView: 'app/views/nav_view',
         carMapView: 'app/views/car_map_view',
         carListView: 'app/views/car_list_view',
         carView: 'app/views/car_view',
@@ -52,7 +53,7 @@ requirejs.config({
 	urlArgs: "bust=" + (new Date()).getTime()
 });
 
-requirejs(['cs!app/app', 'marionette', 'cs!account', 'timepicker'], function (App) {
+requirejs(['cs!app/app'], function (App) {
     console.log("start");
     return $(function(){
         App.start();

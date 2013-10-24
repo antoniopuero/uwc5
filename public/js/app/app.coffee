@@ -1,4 +1,4 @@
-define ['cs!adminLayout', 'cs!userLayout'], (AdminLayout, UserLayout) ->
+define ['cs!navView', 'cs!adminLayout', 'cs!userLayout'], (NavView, AdminLayout, UserLayout) ->
   App = new Marionette.Application()
 
   App.addRegions
@@ -12,6 +12,7 @@ define ['cs!adminLayout', 'cs!userLayout'], (AdminLayout, UserLayout) ->
     if $('#user').length
       App.layout = new UserLayout
 
+    App.nav.show new NavView
     App.content.show App.layout
 
   App.addInitializer ->
