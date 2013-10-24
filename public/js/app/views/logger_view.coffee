@@ -1,12 +1,11 @@
 define 'loggerView', [
   'marionette'
-], () ->
+], (Marionette) ->
   Marionette.ItemView.extend
     template: '#side-logger'
 
-    initialize: ->
-      events:
-        'click .triangle-button': 'toggleLogger'
+    events:
+      'click .triangle-button': 'toggleLogger'
 
     toggleLogger: ->
       log = @$el.find('.log-text')

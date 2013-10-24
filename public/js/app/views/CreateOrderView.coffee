@@ -29,8 +29,8 @@ define [
       @initSearch()
       @ui.date.timepicker showMeridian: false
 
-      # @createOrder()
-      # @calculateDuration()
+  # @createOrder()
+  # @calculateDuration()
 
     hideError: ->
       @ui.errorProvider.hide()
@@ -59,7 +59,6 @@ define [
         @getLatLngFromAddress(@ui.endPlace.val()),
         @getLatLngFromAddress(@ui.startPlace.val()),
       ).done (endLatLng, startLatLng) =>
-
         @getPathBetweenPoints startLatLng, endLatLng, (distanceResult, status) =>
           unless status is 'OK'
             return @errorProvider status + ': cannot create route between this points'
@@ -67,13 +66,13 @@ define [
           modelData = {}
 
           unless startLatLng && endLatLng && distanceResult &&
-            (modelData.startPoint = @retrievePoint(startLatLng)) &&
-            (modelData.endPoint = @retrievePoint(endLatLng)) &&
-            (modelData.path = @retrievePath distanceResult.routes[0].overview_path) &&
-            (modelData.distance = distanceResult.routes[0].legs[0].distance.value) &&
-            (modelData.price = @retrievePrice(modelData.distance))
-              @errorProvider 'Can not buid rout between points'
-              return
+          (modelData.startPoint = @retrievePoint(startLatLng)) &&
+          (modelData.endPoint = @retrievePoint(endLatLng)) &&
+          (modelData.path = @retrievePath distanceResult.routes[0].overview_path) &&
+          (modelData.distance = distanceResult.routes[0].legs[0].distance.value) &&
+          (modelData.price = @retrievePrice(modelData.distance))
+            @errorProvider 'Can not buid rout between points'
+            return
           else
             @model.set modelData
 
@@ -132,64 +131,61 @@ define [
       @$el.find('.well').toggle();
 
     nextPath: ->
+      getLatLngFromAddress: (address) ->
+        deferred = new jQuery.Deferred()
+        @geocoder.geocode { address: address }, (results, status) ->
+          unless status is 'OK'
+            return deferred.reject status
 
-    getLatLngFromAddress: (address) ->
-      deferred = new jQuery.Deferred()
-      @geocoder.geocode { address: address }, (results, status) ->
+          unless results[0]?.geometry?.location?
+            return deferred.reject 'Coordinates of addres not found'
 
-        unless status is 'OK'
-          return deferred.reject status
+          deferred.resolve results[0].geometry.location
 
-        unless results[0]?.geometry?.location?
-          return deferred.reject 'Coordinates of addres not found'
+        deferred
 
-        deferred.resolve results[0].geometry.location
-
-      deferred
-
-    getPathBetweenPoints: (startLatLng, endLatLng, callback) ->
-      @directionsService.route {
-        origin: startLatLng
-        destination: endLatLng
-        travelMode: google.maps.TravelMode.DRIVING
-        provideRouteAlternatives: true
+      getPathBetweenPoints: (startLatLng, endLatLng, callback) ->
+        @directionsService.route {
+          origin: startLatLng
+          destination: endLatLng
+          travelMode: google.maps.TravelMode.DRIVING
+          provideRouteAlternatives: true
         }, callback
 
-    retrievePoint: (latLng) ->
-      [latLng.jb, latLng.kb]
+      retrievePoint: (latLng) ->
+        [latLng.jb, latLng.kb]
 
-    retrievePath: (googlePathList) ->
-      _.map googlePathList, (latLng) =>
-        @retrievePoint latLng
+      retrievePath: (googlePathList) ->
+        _.map googlePathList, (latLng) =>
+          @retrievePoint latLng
 
-    retrievePrice: (distance) ->
-      price = Math.round distance / 1000 * 2 + 25 # 25 uah by default + 2 uah for kilommeter
-      price
+      retrievePrice: (distance) ->
+        price = Math.round distance / 1000 * 2 + 25 # 25 uah by default + 2 uah for kilommeter
+        price
 
-    initSearch: ->
-      @searchInput = $(".typeahead", @$el)
+      initSearch: ->
+        @searchInput = $(".typeahead", @$el)
 
-      geocoder = new google.maps.Geocoder()
-      service = new google.maps.places.AutocompleteService()
+        geocoder = new google.maps.Geocoder()
+        service = new google.maps.places.AutocompleteService()
 
-      @searchInput.typeahead
-        source: (query, process) =>
-          service.getPlacePredictions {
-            input: query
-            componentRestrictions: { country: 'ua' }
-          }, (predictions, status) =>
-            if status is google.maps.places.PlacesServiceStatus.OK
-              process($.map predictions, (prediction) =>
-                prediction.description.split(',')[0]
-              )
-        updater: (item) =>
-          #geocoder.geocode { address: item }, (results, status) =>
-
+        @searchInput.typeahead
+          source: (query, process) =>
+            service.getPlacePredictions {
+              input: query
+              componentRestrictions: { country: 'ua' }
+            }, (predictions, status) =>
+              if status is google.maps.places.PlacesServiceStatus.OK
+                process($.map predictions, (prediction) =>
+                  prediction.description.split(',')[0]
+                )
+          updater: (item) =>
+            #geocoder.geocode { address: item }, (results, status) =>
             item
 
-    resetForm: ->
-      @ui.startPlace.val('')
-      @ui.endPlace.val('')
-      @ui.price.val('')
-      @ui.date.val('')
-      @ui.name.val('')
+      resetForm: ->
+        @ui.startPlace.val('')
+        @ui.endPlace.val('')
+        @ui.price.val('')
+        @ui.date.val('')
+        @ui.name.val('')
