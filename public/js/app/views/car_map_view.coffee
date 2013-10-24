@@ -34,13 +34,7 @@ define 'carMapView', ['marionette', 'cs!dummyView'], (Marionette, DummyView) ->
           point.car.trigger('mouseout-on-map')
 
     onBeforeRender: ->
-      mapOptions =
-        zoom: 11
-        center: new google.maps.LatLng(50.44, 30.52)
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-        streetViewControl: false
-
-      @map = App.map#new google.maps.Map(@el, mapOptions)
+      @map = App.map
 
     onRender: ->
       @renderPoints()
@@ -62,6 +56,6 @@ define 'carMapView', ['marionette', 'cs!dummyView'], (Marionette, DummyView) ->
 
       @points.push point
 
-      appendHtml: (collectionView, itemView, index) -> null
+    appendHtml: (collectionView, itemView, index) -> null
 
   CarMapView
