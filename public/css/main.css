@@ -11,6 +11,8 @@ label.error{color:#c7254e;background:#f9f2f4}
 #cars tr:hover > td,#cars tr.selected > td{background-color:#d9edf7;-webkit-transition:all 0.8s ease;-moz-transition:all 0.8s ease;-o-transition:all 0.8s ease;-ms-transition:all 0.8s ease;transition:all 0.8s ease}
 .triangle-button{width:0;height:0;border-style:solid;border-width:20px 20px 20px 0;border-color:transparent #8b9196 transparent transparent}
 .order-table{font-size:11px}
+.admin-tools{float:right;}
+.admin-tools button{display:block;margin:5px 20px}
 #orders{float:left;}
 #orders table{width:700px;}
 #orders table td{white-space:nowrap;overflow:hidden}
@@ -18,5 +20,5 @@ label.error{color:#c7254e;background:#f9f2f4}
 #orders table .small{max-width:20px}
 #orders table .phone{max-width:40px}
 #orders table .mini{max-width:5px}
-#cars{width:240px;float:right}
-#map{-webkit-box-shadow:3px 3px 15px rgba(0,0,0,0.5);box-shadow:3px 3px 15px rgba(0,0,0,0.5)}
+#orders table .tools{max-width:5px}
+#cars{width:180px;float:right}

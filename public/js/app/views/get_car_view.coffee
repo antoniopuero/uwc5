@@ -7,14 +7,13 @@ define 'getCarView', ['cs!createOrderView', 'cs!order', 'marionette'], (CreateOr
 
     send: ->
       @model = new Order
-      @calculateDuration()
-
-      @model.set @prepareModelData()
-      @model.save @model.toJSON(),
-        validate: false
-        success: =>
-          alert @model.price
-          @resetForm()
+      @calculateDuration =>
+        @model.set @prepareModelData()
+        @model.save @model.toJSON(),
+          validate: false
+          success: =>
+            alert @model.get('price')
+            @resetForm()
 
     prepareModelData: ->
       data =

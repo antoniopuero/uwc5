@@ -12,6 +12,8 @@ define 'adminLayout', [
     template: '#admin-template'
 
     initialize: ->
+    events:
+      'click .js-edit': 'editLine'
 
     regions:
       map: '#map'
@@ -48,6 +50,11 @@ define 'adminLayout', [
 
       mapDiv = document.getElementById('map')
       App.map = new google.maps.Map(mapDiv, mapOptions)
+
+    editLine: ->
+      App.map.line.setEditable(true) if App.map.line
+      console.log 'edit line'
+
 
 
 
