@@ -1,7 +1,8 @@
 define [
   'cs!/js/app/views/OrderView'
+  'cs!/js/app/views/OrderListView'
   'cs!order'
-], (OrderView, Order) ->
+], (OrderView,OrderListView,Order ) ->
   class CreateOrderView extends Marionette.ItemView
     template: '#create-order-template'
 
@@ -77,7 +78,7 @@ define [
           else
             @model.set modelData
 
-          @drawOrderLine()
+          OrderListView.drawOrderPath @model
 
           @ui.errorProvider.hide()
 
@@ -86,47 +87,6 @@ define [
 
     clearLine: ->
       App.map.line.setMap null
-
-    drawOrderLine: ->
-      updatePath = =>
-        @model.updatePathFromGoogle App.map.line.getPath().getArray()
-
-      polylineOptions =
-        path: @model.pathToGoogle()
-        geodesic: true
-        strokeColor: '#FF0000'
-        strokeOpacity: 0.8
-        strokeWeight: 4
-        editable: true
-        map: App.map
-
-      startPointOptions =
-        position: new google.maps.LatLng @model.get('startPoint')[0], @model.get('startPoint')[1]
-        map: App.map
-        icon:
-          url: '/i/start.png'
-          size:
-            width: 50
-            height: 30
-
-      endPointOptions =
-        position: new google.maps.LatLng @model.get('endPoint')[0], @model.get('endPoint')[1]
-        map: App.map
-        icon:
-          url: '/i/finish.png'
-          size:
-            width: 66
-            height: 28
-
-      if App.map.line then App.map.line.setMap null
-      if App.map.startPoint then App.map.startPoint.setMap null
-      if App.map.endPoint then App.map.endPoint.setMap null
-
-      App.map.line = new google.maps.Polyline polylineOptions
-
-      google.maps.event.addListener App.map.line.getPath(), "set_at", updatePath
-      google.maps.event.addListener App.map.line.getPath(), "insert_at", updatePath
-      google.maps.event.addListener App.map.line.getPath(), "remove_at", updatePath
 
     saveOrder: ->
       @model.set @prepareModelData()
