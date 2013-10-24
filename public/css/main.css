@@ -1,3 +1,4 @@
+tr{cursor:pointer}
 .hidden{display:none}
 label.error{color:#c7254e;background:#f9f2f4}
 #car-map{height:400px;border:1px solid #000;background:#808080}

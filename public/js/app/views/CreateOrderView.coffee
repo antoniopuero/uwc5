@@ -8,7 +8,7 @@ define [
     events:
       "click .js-save-order": "saveOrder"
       "click .js-cancel-order": "cancelOrder"
-      "click .js-calculate-order": "calculateOrder"
+      "click .js-calculate-order": "calculateDuration"
       "click .js-next-path": "nextPath"
       "click .js-create-order": "createOrder"
       "click .js-hide-error": "hideError"
@@ -28,8 +28,9 @@ define [
     onShow: ->
       @initSearch()
       @ui.date.timepicker showMeridian: false
+
       # @createOrder()
-      # @calculateOrder()
+      # @calculateDuration()
 
     hideError: ->
       @ui.errorProvider.hide()
@@ -41,10 +42,15 @@ define [
     createOrder: ->
       @toggleForm();
       @model = new Order
+
+      @model.on 'change:price', (model, price) =>
+        console.log arguments
+        @ui.price.val price + ' грн'
+
       @model.on 'invalid', (model, error) =>
         @errorProvider error
 
-    calculateOrder: () ->
+    calculateDuration: () ->
       unless @ui.endPlace.val() && @ui.startPlace.val()
         @errorProvider 'Set START and DEST points'
         return
@@ -67,12 +73,34 @@ define [
             (modelData.distance = distanceResult.routes[0].legs[0].distance.value) &&
             (modelData.price = @retrievePrice(modelData.distance))
               @errorProvider 'Can not buid rout between points'
-              return false
+              return
           else
             @model.set modelData
 
-          @model.set @prepareModelData()
+          @drawOrderLine()
+
           @ui.errorProvider.hide()
+
+    clearLine: ->
+      App.map.line.setMap null
+
+    drawOrderLine: ->
+      updatePath = =>
+        @model.updatePathFromGoogle App.map.line.getPath().getArray()
+
+      if App.map.line then App.map.line.setMap null
+      App.map.line = new google.maps.Polyline
+        path: @model.pathToGoogle()
+        geodesic: true
+        strokeColor: '#FF0000'
+        strokeOpacity: 1.0
+        strokeWeight: 2
+
+      App.map.line.setEditable(true)
+      google.maps.event.addListener App.map.line.getPath(), "set_at", updatePath
+      google.maps.event.addListener App.map.line.getPath(), "insert_at", updatePath
+      google.maps.event.addListener App.map.line.getPath(), "remove_at", updatePath
+      App.map.line.setMap App.map
 
     saveOrder: ->
       @model.set @prepareModelData()
@@ -82,10 +110,12 @@ define [
           @toggleForm()
           @resetForm()
           @ui.errorProvider.hide()
+          @clearLine()
 
     cancelOrder: ->
       @toggleForm()
       @model.destroy()
+      @clearLine()
 
     prepareModelData: ->
       data = {}
@@ -134,7 +164,6 @@ define [
 
     retrievePrice: (distance) ->
       price = Math.round distance / 1000 * 2 + 25 # 25 uah by default + 2 uah for kilommeter
-      @ui.price.val price + ' грн'
       price
 
     initSearch: ->
@@ -164,5 +193,3 @@ define [
       @ui.price.val('')
       @ui.date.val('')
       @ui.name.val('')
-
-

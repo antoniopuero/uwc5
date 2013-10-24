@@ -7,6 +7,8 @@ define ['cs!adminLayout'], (AdminLayout) ->
 
   App.addInitializer ->
     if $('#admin').length
+
+
       App.layout = new AdminLayout
       App.content.show App.layout
 

@@ -15,17 +15,19 @@ define 'adminLayout', [
       console.log 'init layout'
 
     regions:
-      carMap: '#car-map-wrap'
+      map: '#map'
       orders: "#orders"
       cars: "#cars"
       createOrder: "#create-order"
 
-    onRender: ->
+    onShow: ->
       cars = new Cars
       orders = new Orders
 
+      @createMap()
+
       @orders.show new OrderListView collection: orders
-      @carMap.show new CarMapView collection: cars
+      @map.show new CarMapView collection: cars
       @cars.show new CarListView collection: cars
       @createOrder.show new CreateOrderView collection: orders
 
@@ -37,5 +39,17 @@ define 'adminLayout', [
 
       cars.fetch reset: true
       orders.fetch reset: true
+
+    createMap: ->
+      mapOptions =
+        zoom: 11
+        center: new google.maps.LatLng(50.44, 30.52)
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+        streetViewControl: false
+
+      mapDiv = document.getElementById('map')
+      App.map = new google.maps.Map(mapDiv, mapOptions)
+
+
 
   AdminLayout

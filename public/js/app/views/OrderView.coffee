@@ -6,6 +6,8 @@ define ['text!/js/app/templates/order.html'], (orderTemplate) ->
     initialize: ->
     events:
       'click .delete': 'destroy'
+      'click' : ->
+        @model.trigger 'click', @model
 
     destroy: ->
       @model.destroy()

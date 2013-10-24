@@ -5,7 +5,6 @@ define 'carMapView', ['marionette', 'cs!dummyView'], (Marionette, DummyView) ->
 
     initialize: ->
       @points = []
-      console.log 'car-map'
 
     renderPoints: ->
       _.each @points, (point) =>
@@ -41,7 +40,7 @@ define 'carMapView', ['marionette', 'cs!dummyView'], (Marionette, DummyView) ->
         mapTypeId: google.maps.MapTypeId.ROADMAP
         streetViewControl: false
 
-      @map = new google.maps.Map(@el, mapOptions)
+      @map = App.map#new google.maps.Map(@el, mapOptions)
 
     onRender: ->
       @renderPoints()
