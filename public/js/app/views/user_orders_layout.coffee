@@ -8,6 +8,7 @@ define 'userOrdersLayout', [
 ], (UserLayout, Cars, Orders, CarMapView, UserOrdersView, Marionette) ->
   class UserOrdersLayout extends UserLayout
     template: '#user-orders-template'
+    id: 'user-orders'
 
     regions:
       map: '#map'
@@ -17,10 +18,10 @@ define 'userOrdersLayout', [
       cars = new Cars
       orders = new Orders
 
-      @createMap()
       @map.show new CarMapView collection: cars
       @orders.show new UserOrdersView collection: orders
 
+      @createMap()
       orders.fetch reset: true
 
   UserOrdersLayout
