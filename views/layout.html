@@ -20,7 +20,7 @@
   <script data-main="js/main" src="/js/require.js"></script>
   {%endif%}
 </head>
-<body>
+<body style="display: none">
 <header id="nav"></header>
 
 <div class="container">
@@ -32,52 +32,7 @@
 <footer></footer>
 
 <script type="text/template" id="nav-template">
-  <div class="navbar">
-    <div class="navbar-inner">
-      <a class="brand" href="/#">TaxiSky</a>
-      <ul class="nav pull-right" id="auth">
-        <!-- AUTH FORM -->
-        {% if user %}
-        <li>
-          <a href="#">Заказать машину</a>
-        </li>
-
-        <li>
-          <a href="#orders">Мои заказы</a>
-        </li>
-
-        <li>
-          <a href="/profile">{{ user.username }}</a>
-        </li>
-
-        <li>
-          <a class="logout" href="#logout">Logout</a>
-        </li>
-        {% else %}
-        <li>
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            Sign In
-            <b class="caret"></b>
-          </a>
-
-          <div class="span4 well dropdown-menu">
-            <form class="text-center" method="POST" action="" accept-charset="UTF-8" id="login">
-              <div class="alert alert-error hidden">
-                Incorrect Username or Password!
-              </div>
-              <input type="text" class="span4" name="username" placeholder="Username">
-              <input type="password" class="span4" name="password" placeholder="Password">
-              <button type="submit" class="btn btn-info btn-block btn-login">Sign In</button>
-              <div class="text-center">or</div>
-              <button class="btn btn-info btn-primary btn-block" data-toggle="modal" href="#myModal">Sign Up</button>
-            </form>
-          </div>
-        </li>
-        {% endif %}
-        <!-- END AUTH FORM -->
-      </ul>
-    </div>
-  </div>
+  <div class="navbar" id="navbar">{%block navbar%}{%endblock%}</div>
 
   <div class="modal hide" id="myModal">
     <div class="modal-header">

@@ -5,9 +5,11 @@ define 'userRouter', ['cs!userLayout', 'cs!userOrdersLayout', 'marionette'], (Us
       'orders': 'orders'
 
     index: ->
-      App.content.show new UserLayout
+      App.layout = new UserLayout
+      App.content.show App.layout
 
     orders: ->
-      App.content.show new UserOrdersLayout
+      App.layout = new UserOrdersLayout
+      App.content.show App.layout
 
   UserRouter

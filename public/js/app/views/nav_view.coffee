@@ -1,5 +1,5 @@
 define 'navView', ['marionette', 'jquery', 'validator', 'bootstrap'], (Marionette, $) ->
-  class NavView extends Marionette.ItemView
+  class NavView extends Marionette.CompositeView
     template: '#nav-template'
 
     onRender: ->

@@ -15,6 +15,7 @@ requirejs.config({
         cars: 'app/collections/cars',
         order: 'app/models/order',
         orders: 'app/collections/orders',
+        myOrders: 'app/collections/my_orders',
         user: 'app/models/users',
         users: 'app/collections/users',
 

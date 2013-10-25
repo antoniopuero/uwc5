@@ -1,4 +1,4 @@
-define 'userOrderView', ['marionette', 'orderView'], (Marionette, OrderView) ->
+define 'userOrderView', ['marionette', 'cs!orderView'], (Marionette, OrderView) ->
   class UserOrderView extends OrderView
     template: '#user-order-template'
 

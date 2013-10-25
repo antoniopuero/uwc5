@@ -4,6 +4,7 @@ define 'adminRouter', ['cs!adminLayout', 'marionette'], (AdminLayout, Marionette
       '': 'index'
 
     index: ->
-      App.content.show new AdminLayout
+      App.layout = new AdminLayout
+      App.content.show App.layout
 
   AdminRouter

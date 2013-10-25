@@ -1,11 +1,11 @@
 define 'userOrdersLayout', [
   'cs!userLayout'
   'cs!cars'
-  'cs!orders'
+  'cs!myOrders'
   'cs!carMapView'
   'cs!userOrdersView'
   'marionette'
-], (UserLayout, Cars, Orders, CarMapView, UserOrdersView, Marionette) ->
+], (UserLayout, Cars, MyOrders, CarMapView, UserOrdersView, Marionette) ->
   class UserOrdersLayout extends UserLayout
     template: '#user-orders-template'
     id: 'user-orders'
@@ -16,7 +16,7 @@ define 'userOrdersLayout', [
 
     onShow: ->
       cars = new Cars
-      orders = new Orders
+      orders = new MyOrders
 
       @map.show new CarMapView collection: cars
       @orders.show new UserOrdersView collection: orders
