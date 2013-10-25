@@ -1,14 +1,6 @@
 define ['text!/js/app/templates/order.html', 'marionette'], (orderTemplate, Marionette) ->
   Marionette.ItemView.extend
     tagName: 'tr'
-    className: ->
-      className = ''
-      if @model.get('status') is 'ready'
-        return className += ' success'
-      if @model.get('status') is 'assiged'
-        return className += ' warning'
-      if @model.get('status') is 'completed'
-        return className += ' error'
 
     template: orderTemplate
     attributes:
