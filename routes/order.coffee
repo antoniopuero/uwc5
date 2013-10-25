@@ -8,6 +8,7 @@ module.exports = (app) ->
             res.apiResponse orders
 
     app.post "#{global.apiUrl}/orders", (req, res, next) ->
+        req.body.userId = req.user._id unless req.user.isAdmin
         orderService.create req.body, (err, order) ->
             if err then return next err
             res.apiResponse order, false, false, io: 'order-create'
