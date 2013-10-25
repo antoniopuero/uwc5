@@ -1,10 +1,10 @@
 requirejs.config({
 	baseUrl: 'js/',
 	paths: {
-		// THIRD PART
-        jquery: 'components/jquery/jquery',
-		validator: 'components/jquery.validation/jquery.validate',
-		bootstrap: 'components/bootstrap.css/js/bootstrap',
+		    // THIRD PART
+		    jquery: 'components/jquery/jquery',
+		    validator: 'components/jquery.validation/jquery.validate',
+		    bootstrap: 'components/bootstrap.css/js/bootstrap',
         timepicker: 'components/bootstrap-timepicker/js/bootstrap-timepicker',
         underscore: "components/underscore/underscore",
         backbone: "components/backbone/backbone",
@@ -33,22 +33,22 @@ requirejs.config({
         carListView: 'app/views/car_list_view',
         carView: 'app/views/car_view',
         dummyView: 'app/views/dummy_view',
-        createOrderView: 'app/views/CreateOrderView',
+        createOrderView: 'app/views/create_order_view',
         getCarView: 'app/views/get_car_view',
         modalView: 'app/views/modal_view',
-        orderListView: 'app/views/OrderListView',
-        orderView: 'app/views/OrderView'
+        orderListView: 'app/views/order_list_view',
+        orderView: 'app/views/order_view'
 	},
 	shim: {
-		bootstrap: {
-			deps: ['jquery']
-		},
+        bootstrap: {
+            deps: ['jquery']
+        },
         timepicker: {
           deps: ["jquery"]
         },
-		validator: {
-			deps: ['jquery']
-		},
+        validator: {
+          deps: ['jquery']
+        },
         backbone: {
             deps: ["underscore", "jquery"],
             exports: "Backbone"

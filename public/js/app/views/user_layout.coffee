@@ -15,11 +15,10 @@ define 'userLayout', [
     onShow: ->
       cars = new Cars
 
-      @createMap()
-
       @map.show new CarMapView collection: cars
       @getCar.show new GetCarView
 
+      @createMap()
       cars.fetch reset: true
 
     onClose: ->
@@ -32,7 +31,7 @@ define 'userLayout', [
         mapTypeId: google.maps.MapTypeId.ROADMAP
         streetViewControl: false
 
-      mapDiv = document.getElementById('map')
+      mapDiv = @$('#car-map')[0]
       App.map = new google.maps.Map(mapDiv, mapOptions)
 
   UserLayout

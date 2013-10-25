@@ -12,6 +12,7 @@ label.error{color:#c7254e;background:#f9f2f4}
 .order-table{font-size:11px}
 .admin-tools{float:right;}
 .admin-tools button{display:block;margin:5px 20px}
+#user-orders #orders{margin-top:20px}
 #orders{float:left;}
 #orders table{width:700px;}
 #orders table .selected td{background:#77c7db}
