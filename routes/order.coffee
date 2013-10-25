@@ -25,3 +25,9 @@ module.exports = (app) ->
             if err then return next err
             unless order? then return next new Error 'sorry,the model is not found'
             res.apiResponse order, false, false, io: 'order-delete'
+
+    app.get "#{global.apiUrl}/myorders", (req, res, next) ->
+        next new app.Errors.Unauthorized() unless req.user
+        orderService.getUserOrders req.user._id, (err, orders) ->
+            if err then return next err
+            res.apiResponse orders

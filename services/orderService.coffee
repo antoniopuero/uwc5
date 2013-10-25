@@ -27,4 +27,7 @@ class OrderService
                 if err then return callback err
                 callback null, order
 
+    getUserOrders: (userId, callback) ->
+        Order.find userId: userId, callback
+
 module.exports = new OrderService

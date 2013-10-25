@@ -44,10 +44,10 @@ OrderSchema = new Schema
         default: 'now'
 
     userId:
-        type: ObjectId
+        type: String
 
     carId:
-        type: ObjectId
+        type: String
 
 OrderSchema.methods.getCarsNearby = (callback) ->
     Car.near(@startPoint).exec callback
