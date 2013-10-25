@@ -7,7 +7,7 @@ label.error{color:#c7254e;background:#f9f2f4}
 .admin-form{margin:10px 0}
 .create-order{cursor:pointer}
 .admin__buttons-submit{float:right;margin-right:235px}
-#car-map img{max-width:none}
+#car-map img,#map img{max-width:none}
 .triangle-button{width:0;height:0;border-style:solid;border-width:20px 20px 20px 0;border-color:transparent #8b9196 transparent transparent}
 .order-table{font-size:11px}
 .admin-tools{float:right;}
@@ -27,3 +27,4 @@ label.error{color:#c7254e;background:#f9f2f4}
 #cars table .grey td{background:#777}
 #map{-webkit-box-shadow:3px 3px 15px rgba(0,0,0,0.5);box-shadow:3px 3px 15px rgba(0,0,0,0.5)}
 .calculated-price{font-weight:bolder}
+.order-car{margin-top:20px}

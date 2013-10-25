@@ -10,8 +10,6 @@ requirejs.config({
         backbone: "components/backbone/backbone",
         marionette: "components/backbone.marionette/lib/backbone.marionette",
 
-        account: 'app/account',
-
         // MODELS
         car: 'app/models/car',
         cars: 'app/collections/cars',
@@ -20,9 +18,16 @@ requirejs.config({
         user: 'app/models/users',
         users: 'app/collections/users',
 
+        // ROUTERS
+        userRouter: 'app/routers/user_router',
+        adminRouter: 'app/routers/admin_router',
+
         // VIEWS
         adminLayout: 'app/views/admin_layout',
         userLayout: 'app/views/user_layout',
+        userOrdersLayout: 'app/views/user_orders_layout',
+        userOrdersView: 'app/views/user_orders_view',
+        userOrderView: 'app/views/user_order_view',
         navView: 'app/views/nav_view',
         carMapView: 'app/views/car_map_view',
         carListView: 'app/views/car_list_view',
@@ -30,7 +35,9 @@ requirejs.config({
         dummyView: 'app/views/dummy_view',
         createOrderView: 'app/views/CreateOrderView',
         getCarView: 'app/views/get_car_view',
-        modalView: 'app/views/modal_view'
+        modalView: 'app/views/modal_view',
+        orderListView: 'app/views/OrderListView',
+        orderView: 'app/views/OrderView'
 	},
 	shim: {
 		bootstrap: {

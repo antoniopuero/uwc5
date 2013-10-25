@@ -4,8 +4,8 @@ define 'adminLayout', [
   'cs!order'
   'cs!carMapView'
   'cs!carListView'
-  'cs!/js/app/views/OrderListView'
-  'cs!/js/app/views/CreateOrderView'
+  'cs!orderListView'
+  'cs!createOrderView'
   'marionette'
 ], (Cars, Orders, Order, CarMapView, CarListView, OrderListView, CreateOrderView) ->
   class AdminLayout extends Marionette.Layout
@@ -33,7 +33,6 @@ define 'adminLayout', [
       createOrder: "#create-order"
 
     onShow: ->
-
       @createMap()
 
       @ordersReg.show new OrderListView collection: @orders
@@ -59,6 +58,7 @@ define 'adminLayout', [
 
     errorProvider: (error) ->
       alert error
+
     applyOrder: ->
       unless @selectedOrder? then return @errorProvider 'Выберите заказ, пожалуйста'
       unless @selectedCar? then return @errorProvider 'Выберите машину, пожалуйста'
@@ -91,7 +91,6 @@ define 'adminLayout', [
         selected: false
         status: 'buisy'
         orderId: order.get '_id'
-
 
     initApplyOrderEvents: ->
       @listenTo @orders, 'apply-me', (order) =>

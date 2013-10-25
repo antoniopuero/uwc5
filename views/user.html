@@ -1,14 +1,14 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-<div id="user"></div>
 
 {% if user %}
+<div id="user"></div>
 <script type="text/template" id="user-template">
 <div class="row" id="map"></div>
-<div class="row-fluid">
+<div class="row-fluid order-car">
   <div class="span4">
-    Привет!<br>
+    <h4>Привет!</h4>
     Ты можешь заказать машину просто заполнив эту форму.<br>
     Спасибо за доверие! :)
   </div>
@@ -17,6 +17,21 @@
   </div>
 </div>
 <div id="modal"></div>
+</script>
+
+<script type="text/template" id="user-orders-template">
+  <div class="row" id="map"></div>
+  <div class="row">
+    <div id="orders"></div>
+  </div>
+</script>
+
+<script type="text/template" id="user-order-template">
+  <td class="title js-start-point-title"><%= startPointTitle %></td>
+  <td class="title js-end-point-title"><%= endPointTitle %></td>
+  <td class="small js-date"><%= date %></td>
+  <td class="small js-price"><%= price%> грн</td>
+  <td class="phone js-phone"><%= phone %></td>
 </script>
 
 <script type="text/template" id="get-car-template">

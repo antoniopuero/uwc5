@@ -10,7 +10,7 @@ define 'userLayout', [
     regions:
       map: '#map'
       getCar: "#get-car"
-      modal: "modal"
+      modal: "#modal"
 
     onShow: ->
       cars = new Cars
@@ -21,6 +21,9 @@ define 'userLayout', [
       @getCar.show new GetCarView
 
       cars.fetch reset: true
+
+    onClose: ->
+      App.map = null
 
     createMap: ->
       mapOptions =

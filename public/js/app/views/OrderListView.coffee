@@ -1,4 +1,4 @@
-define ['cs!/js/app/views/OrderView'], (OrderView) ->
+define 'orderListView', ['cs!orderView'], (OrderView) ->
   class OrderListView extends Marionette.CollectionView
     itemView: OrderView
     tagName: 'table'

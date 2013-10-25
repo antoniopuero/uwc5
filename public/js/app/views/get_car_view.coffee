@@ -1,4 +1,9 @@
-define 'getCarView', ['cs!modalView','cs!createOrderView', 'cs!order', 'marionette'], (modalView, CreateOrderView, Order, Marionette) ->
+define 'getCarView', [
+  'cs!modalView'
+  'cs!createOrderView'
+  'cs!order'
+  'marionette'
+], (modalView, CreateOrderView, Order, Marionette) ->
   class GetCarView extends CreateOrderView
     template: '#get-car-template'
     events: ->
@@ -13,6 +18,7 @@ define 'getCarView', ['cs!modalView','cs!createOrderView', 'cs!order', 'marionet
           success: =>
             App.layout.modal.show new modalView(model: @model)
             @resetForm()
+
     prepareModelData: ->
       data =
         startPointTitle: @ui.startPlace.val()

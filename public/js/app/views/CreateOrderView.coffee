@@ -1,10 +1,10 @@
 define [
-  'cs!/js/app/views/OrderView',
-  'cs!/js/app/views/OrderListView',
+  'cs!orderView',
+  'cs!orderListView',
   'cs!order',
   'marionette',
   'timepicker'
-], (OrderView,OrderListView,Order, Marionette ) ->
+], (OrderView, OrderListView,Order, Marionette) ->
   class CreateOrderView extends Marionette.ItemView
     template: '#create-order-template'
 

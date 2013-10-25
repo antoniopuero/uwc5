@@ -1,4 +1,8 @@
-define ['cs!navView', 'cs!adminLayout', 'cs!userLayout'], (NavView, AdminLayout, UserLayout) ->
+define [
+  'cs!navView'
+  'cs!adminRouter'
+  'cs!userRouter'
+], (NavView, AdminRouter, UserRouter) ->
   App = new Marionette.Application()
 
   App.addRegions
@@ -7,13 +11,12 @@ define ['cs!navView', 'cs!adminLayout', 'cs!userLayout'], (NavView, AdminLayout,
 
   App.addInitializer ->
     if $('#admin').length
-      App.layout = new AdminLayout
+      App.router = new AdminRouter
 
     if $('#user').length
-      App.layout = new UserLayout
+      App.router = new UserRouter
 
     App.nav.show new NavView
-    App.content.show App.layout
 
   App.addInitializer ->
     Backbone.history.start()
