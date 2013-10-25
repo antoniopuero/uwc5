@@ -1,5 +1,6 @@
 carService = require "#{global.path.root}/services/carService"
 
+
 module.exports = (app) ->
     app.get "#{global.apiUrl}/cars", (req, res, next) ->
         carService.getAll (err, cars) ->

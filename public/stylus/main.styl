@@ -37,10 +37,6 @@ label.error
 #car-map img
     max-width: none
 
-#cars tr:hover > td, #cars tr.selected > td
-    background-color: #d9edf7;
-    transition: all 0.8s ease;
-
 .triangle-button
     width: 0px;
     height: 0px;
@@ -58,6 +54,10 @@ label.error
 #orders
     float: left
     table
+        .selected
+            td
+                background: #77C7DB
+
         width: 700px
         td
             white-space: nowrap
@@ -75,6 +75,17 @@ label.error
 
 
 #cars
+    table
+        .selected
+            td
+                background: #77C7DB
+        .hovered
+            td
+                background: #77C7DB
+        .grey
+            td
+                background: #777
+
     width: 180px
     float: right
 

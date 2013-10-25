@@ -2,12 +2,13 @@ define ['text!/js/app/templates/order.html', 'marionette'], (orderTemplate, Mari
   Marionette.ItemView.extend
     tagName: 'tr'
     className: ->
+      className = ''
       if @model.get('status') is 'ready'
-        return 'error'
+        return className += ' success'
       if @model.get('status') is 'assiged'
-        return 'warning'
+        return className += ' warning'
       if @model.get('status') is 'completed'
-        return 'success'
+        return className += ' error'
 
     template: orderTemplate
     attributes:
@@ -16,18 +17,31 @@ define ['text!/js/app/templates/order.html', 'marionette'], (orderTemplate, Mari
     initialize: ->
       @listenTo @model, 'change', @render
 
+    onRender: ->
+      if @model.get('selected') is true
+        @$el.addClass('selected')
+      else
+        @$el.removeClass('selected')
+
+      if @model.get('status') is 'ready'
+        @$el.addClass('success')
+      if @model.get('status') is 'assigned'
+        @$el.addClass('warning')
+      if @model.get('status') is 'completed'
+        @$el.addClass('error')
+
     events:
       'click .delete': 'destroy'
+      'click .js-apply-first' : (e) ->
+        e?.stopPropagation()
+        @model.trigger 'apply-me', @model
+
 
       'click' : ->
-        @model.trigger 'click', @model
+        @model.set 'selected', true
 
       'keydown': ->
         console.log 'press'
-
-      'click .js-edit': (e) ->
-        App.map.line.setEditable true if App.map.line
-        e.stopPropagation()
 
     destroy: ->
       @model.destroy()

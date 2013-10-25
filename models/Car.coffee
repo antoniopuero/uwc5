@@ -20,5 +20,7 @@ CarSchema = new Schema
         type: String
         required: true
         default: 'ashot'
+    orderId:
+        type: ObjectId
 
 module.exports = global.connections.common.model 'Car', CarSchema

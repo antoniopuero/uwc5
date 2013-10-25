@@ -33,6 +33,9 @@ define 'carMapView', ['marionette', 'cs!dummyView'], (Marionette, DummyView) ->
         google.maps.event.addListener point.marker, 'mouseout', ->
           point.car.trigger('mouseout-on-map')
 
+        google.maps.event.addListener point.marker, 'click', ->
+          point.car.set 'selected', true
+
     onBeforeRender: ->
       @map = App.map
 

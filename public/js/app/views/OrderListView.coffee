@@ -10,8 +10,8 @@ define ['cs!/js/app/views/OrderView'], (OrderView) ->
       @initOrderEvents()
 
     initOrderEvents: ->
-      @listenTo @collection, 'click', (order) ->
-        OrderListView.drawOrderPath(order)
+      @listenTo @collection, 'change:selected', (order, isSelected) ->
+        OrderListView.drawOrderPath(order) if isSelected
 
     @drawOrderPath: (order)->
       updatePath = ->
