@@ -9,7 +9,7 @@ define 'carView', ['marionette', 'text!/js/app/templates/car.html'], (Marionette
       @listenTo @model, 'mouseout-on-map', =>
         @$el.removeClass('hovered')
 
-      @listenTo @model, 'change', (order) ->
+      @listenTo @model, 'change', (order) =>
         @render()
 
         if order.get('selected') is true
@@ -20,14 +20,19 @@ define 'carView', ['marionette', 'text!/js/app/templates/car.html'], (Marionette
     events:
       mouseenter: 'highlight'
       mouseleave: 'unhighlight'
-      'click' : ->
-        @model.set 'selected', true
-
-      'keydown': ->
-        console.log 'press'
+      click: 'click'
+      keydown: 'keydown'
 
     highlight: -> @model.trigger 'highlight'
+
     unhighlight: -> @model.trigger 'unhighlight'
+
+    keydown: ->
+      console.log 'press'
+
+    click: ->
+      @model.set 'selected', true
+
     onRender: ->
       if @model.get('selected') is true
         @$el.addClass('selected')
@@ -36,8 +41,10 @@ define 'carView', ['marionette', 'text!/js/app/templates/car.html'], (Marionette
 
       if @model.get('status') is 'ready'
         @$el.addClass('success')
+
       if @model.get('status') is 'buisy'
         @$el.addClass('warning')
+
       if @model.get('status') is 'off'
         @$el.addClass('grey')
 

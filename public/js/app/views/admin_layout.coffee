@@ -92,6 +92,10 @@ define 'adminLayout', [
         status: 'buisy'
         orderId: order.get '_id'
 
+    renderCarOrder: (car) ->
+      order = @orders.get car.get('orderId')
+      OrderListView.drawOrderPath order
+
     initApplyOrderEvents: ->
       @listenTo @orders, 'apply-me', (order) =>
         unless order.get('status') is 'ready' then return @errorProvider 'Заказ должен быть свободным (зеленым)'
@@ -104,5 +108,6 @@ define 'adminLayout', [
       @listenTo @cars, 'change:selected', (car) =>
         @selectedCar.set 'selected', false if @selectedCar
         @selectedCar = car
+        @renderCarOrder(car)
 
   AdminLayout
