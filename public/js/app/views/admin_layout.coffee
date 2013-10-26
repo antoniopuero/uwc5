@@ -94,7 +94,7 @@ define 'adminLayout', [
 
     renderCarOrder: (car) ->
       order = @orders.get car.get('orderId')
-      OrderListView.drawOrderPath order
+      OrderListView.drawOrderPath(order) if order?
 
     initApplyOrderEvents: ->
       @listenTo @orders, 'apply-me', (order) =>
