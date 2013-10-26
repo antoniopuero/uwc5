@@ -3,6 +3,7 @@ define [
   'cs!orderListView',
   'cs!order',
   'marionette',
+  'inputmask',
   'timepicker'
 ], (OrderView, OrderListView,Order, Marionette) ->
   class CreateOrderView extends Marionette.ItemView
@@ -30,8 +31,15 @@ define [
 
     onShow: ->
       @initSearch()
+
+
+      if @ui.phone.length
+        @ui.phone.inputmask mask : "(099)-999-99-99"
+
       if @ui.date.length
         @ui.date.timepicker showMeridian: false
+
+
 
       # @createOrder()
       # @calculateDuration()

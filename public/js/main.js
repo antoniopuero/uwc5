@@ -1,11 +1,12 @@
 requirejs.config({
-	baseUrl: 'js/',
-	paths: {
-		    // THIRD PART
-		    jquery: 'components/jquery/jquery',
-		    validator: 'components/jquery.validation/jquery.validate',
-		    bootstrap: 'components/bootstrap.css/js/bootstrap',
+    baseUrl: 'js/',
+    paths: {
+       // THIRD PART
+        jquery: 'components/jquery/jquery',
+        validator: 'components/jquery.validation/jquery.validate',
+        bootstrap: 'components/bootstrap.css/js/bootstrap',
         timepicker: 'components/bootstrap-timepicker/js/bootstrap-timepicker',
+        inputmask: 'components/jquery.inputmask/js/jquery.inputmask',
         underscore: "components/underscore/underscore",
         backbone: "components/backbone/backbone",
         marionette: "components/backbone.marionette/lib/backbone.marionette",
