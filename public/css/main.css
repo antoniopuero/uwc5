@@ -14,7 +14,7 @@ label.error{color:#c7254e;background:#f9f2f4}
 .admin-tools{float:right;}
 .admin-tools button{display:block;margin:5px 20px}
 #user-orders #orders{margin-top:20px}
-#orders{float:left;}
+#orders{color:#333;float:left;}
 #orders table{width:700px;}
 #orders table .selected td{background:#77c7db}
 #orders table td{white-space:nowrap;overflow:hidden}
@@ -30,3 +30,13 @@ label.error{color:#c7254e;background:#f9f2f4}
 #map{-webkit-box-shadow:3px 3px 15px rgba(0,0,0,0.5);box-shadow:3px 3px 15px rgba(0,0,0,0.5)}
 .calculated-price{font-weight:bolder}
 .order-car{margin-top:20px}
+footer{background:#fff156;padding:5px 0;}
+footer .social-nav{margin:0;list-style:none;text-align:center;}
+footer .social-nav .social-link{display:inline-block;margin-left:40px;}
+footer .social-nav .social-link:first-child{margin-left:0}
+footer .social-nav .social-link a img{width:60px;height:60px}
+body{color:#fff;background:#504f4f}
+legend{color:#fff}
+.navbar-inner{background:#fff156;-webkit-border-radius:0;border-radius:0}
+.table tbody tr:hover{color:#333}
+.table tbody tr.success{color:#333}
