@@ -38,5 +38,4 @@ footer .social-nav .social-link a img{width:60px;height:60px}
 body{color:#fff;background:#504f4f}
 legend{color:#fff}
 .navbar-inner{background:#fff156;-webkit-border-radius:0;border-radius:0}
-.table tbody tr:hover{color:#333}
-.table tbody tr.success{color:#333}
+.black-text{color:#333}
