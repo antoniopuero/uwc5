@@ -49,8 +49,6 @@
 
 
 {% block body %}
-
-{% if user %}
 <div id="user"></div>
 
 <script type="text/template" id="user-template">
@@ -84,18 +82,17 @@
 </script>
 
 <script type="text/template" id="get-car-template">
+<form>
 <fieldset>
   <legend>Заказать машину</legend>
   <input class="typeahead input-xlarge" type="text" name="startPlace" placeholder="Откуда ехать">
   <input class="typeahead input-xlarge" type="text" name="endPlace" placeholder="Куда ехать">
+  <div class="controls bootstrap-timepicker">
+      <input class="typeahead input-xlarge" type="text" name="date" placeholder="Время">
+  </div>
   <input class="input-xlarge" type="text" name="phone" placeholder="Телефон">
   <button class="btn send btn-info">Отправить</button>
 </fieldset>
+</form>
 </script>
-
-{% else %}
-<div class="row-fluid">
-  Пожалуйста, войди или зарегистрируйся для заказа машины!
-</div>
-{% endif %}
 {% endblock %}
