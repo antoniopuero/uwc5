@@ -30,12 +30,14 @@ label.error{color:#c7254e;background:#f9f2f4}
 #map{-webkit-box-shadow:3px 3px 15px rgba(0,0,0,0.5);box-shadow:3px 3px 15px rgba(0,0,0,0.5)}
 .calculated-price{font-weight:bolder}
 .order-car{margin-top:20px}
-footer{background:#fff156;padding:5px 0;}
+footer{background:#ece05a;}
 footer .social-nav{margin:0;list-style:none;text-align:center;}
 footer .social-nav .social-link{display:inline-block;margin-left:40px;}
 footer .social-nav .social-link:first-child{margin-left:0}
 footer .social-nav .social-link a img{width:60px;height:60px}
-body{color:#fff;background:#504f4f}
+body{color:#fff;background:url("../i/bg.jpg")}
 legend{color:#fff}
-.navbar-inner{background:#fff156;-webkit-border-radius:0;border-radius:0}
+.navbar-inner{background:#ece05a;-webkit-border-radius:0;border-radius:0;}
+.navbar-inner .brand{text-shadow:none;color:#3b4258}
 .black-text{color:#333}
+.navbar .nav > li > a{text-shadow:none;color:#3b4258}
