@@ -7,19 +7,20 @@ define 'userLayout', [
   class UserLayout extends Marionette.Layout
     template: '#user-template'
 
+    initialize: ->
+      @cars = new Cars
+
     regions:
       map: '#map'
       getCar: "#get-car"
       modal: "#modal"
 
     onShow: ->
-      cars = new Cars
-
-      @map.show new CarMapView collection: cars
+      @map.show new CarMapView collection: @cars
       @getCar.show new GetCarView
 
       @createMap()
-      cars.fetch reset: true
+      @cars.fetch reset: true
 
     onClose: ->
       App.map = null

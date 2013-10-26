@@ -42,7 +42,7 @@ define 'carView', ['marionette', 'text!/js/app/templates/car.html'], (Marionette
       if @model.get('status') is 'ready'
         @$el.addClass('success')
 
-      if @model.get('status') is 'buisy'
+      if @model.get('status') is 'busy'
         @$el.addClass('warning')
 
       if @model.get('status') is 'off'

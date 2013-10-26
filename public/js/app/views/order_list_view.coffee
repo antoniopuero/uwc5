@@ -3,8 +3,6 @@ define 'orderListView', ['cs!orderView'], (OrderView) ->
     itemView: OrderView
     tagName: 'table'
     className: 'table table-condensed table-bordered table-hover order-table'
-    # attributes:
-    #   'contenteditable': true
 
     onShow: ->
       @initOrderEvents()

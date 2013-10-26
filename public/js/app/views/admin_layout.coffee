@@ -72,7 +72,7 @@ define 'adminLayout', [
 
       @selectedCar.save
         selected: false
-        status: 'buisy'
+        status: 'busy'
         orderId: @selectedOrder.get '_id'
 
     applyOrderToTopCar: (order) ->
@@ -89,7 +89,7 @@ define 'adminLayout', [
 
       car.save
         selected: false
-        status: 'buisy'
+        status: 'busy'
         orderId: order.get '_id'
 
     renderCarOrder: (car) ->
