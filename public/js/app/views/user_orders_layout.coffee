@@ -4,24 +4,30 @@ define 'userOrdersLayout', [
   'cs!myOrders'
   'cs!carMapView'
   'cs!userOrdersView'
-  'marionette'
-], (UserLayout, Cars, MyOrders, CarMapView, UserOrdersView, Marionette) ->
+], (UserLayout, Cars, MyOrders, CarMapView, UserOrdersView) ->
   class UserOrdersLayout extends UserLayout
     template: '#user-orders-template'
     id: 'user-orders'
 
+    initialize: ->
+      @cars = new Cars
+      @orders = new MyOrders
+      @initApplyOrderEvents()
+
     regions:
       map: '#map'
-      orders: "#orders"
+      ordersEl: "#orders"
 
     onShow: ->
-      cars = new Cars
-      orders = new MyOrders
-
-      @map.show new CarMapView collection: cars
-      @orders.show new UserOrdersView collection: orders
+      @map.show new CarMapView collection: @cars
+      @ordersEl.show new UserOrdersView collection: @orders
 
       @createMap()
-      orders.fetch reset: true
+      @orders.fetch reset: true
+
+    initApplyOrderEvents: ->
+      @listenTo @orders, 'change:selected', (order) =>
+        @selectedOrder.set 'selected', false if @selectedOrder
+        @selectedOrder = order
 
   UserOrdersLayout
