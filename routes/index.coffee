@@ -10,5 +10,5 @@ module.exports = (app) ->
     app.get '/admin', (req, res, next) ->
       res.render 'admin.html'
 
-    app.get '/user', (req, res, next) ->
-      res.render 'user.html'
+    app.get '/mobile', (req, res, next) ->
+      res.render 'mobile.html'
