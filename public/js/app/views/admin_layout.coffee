@@ -74,7 +74,7 @@ define 'adminLayout', [
 
       @selectedCar.save
         selected: false
-        status: 'buisy'
+        status: 'busy'
         orderId: @selectedOrder.get '_id'
 
     applyOrderToTopCar: (order) ->
@@ -91,8 +91,12 @@ define 'adminLayout', [
 
       car.save
         selected: false
-        status: 'buisy'
+        status: 'busy'
         orderId: order.get '_id'
+
+    renderCarOrder: (car) ->
+      order = @orders.get car.get('orderId')
+      OrderListView.drawOrderPath(order) if order?
 
     initApplyOrderEvents: ->
       @listenTo @orders, 'apply-me', (order) =>
@@ -106,5 +110,6 @@ define 'adminLayout', [
       @listenTo @cars, 'change:selected', (car) =>
         @selectedCar.set 'selected', false if @selectedCar
         @selectedCar = car
+        @renderCarOrder(car)
 
   AdminLayout

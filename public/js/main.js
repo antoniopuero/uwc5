@@ -57,6 +57,9 @@ requirejs.config({
         marionette: {
             deps: ["underscore", "backbone", "jquery"],
             exports: "Marionette"
+        },
+        getCarView: {
+            deps: ['validator']
         }
 	},
 	urlArgs: "bust=" + (new Date()).getTime()

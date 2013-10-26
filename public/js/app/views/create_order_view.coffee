@@ -123,7 +123,7 @@ define [
 
     getLatLngFromAddress: (address) ->
       deferred = new jQuery.Deferred()
-      @geocoder.geocode { address: address }, (results, status) ->
+      @geocoder.geocode address: address, region: 'ua', language: 'ru', (results, status) ->
 
         unless status is 'OK'
           return deferred.reject status

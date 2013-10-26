@@ -3,8 +3,9 @@ define 'orderView', ['text!/js/app/templates/order.html', 'marionette'], (orderT
     tagName: 'tr'
 
     template: orderTemplate
+
     attributes:
-      'contenteditable': true
+      contenteditable: true
 
     initialize: ->
       @listenTo @model, 'change', @render
@@ -29,10 +30,10 @@ define 'orderView', ['text!/js/app/templates/order.html', 'marionette'], (orderT
         @model.trigger 'apply-me', @model
 
 
-      'click' : ->
+      click: ->
         @model.set 'selected', true
 
-      'keydown': ->
+      keydown: ->
         console.log 'press'
 
     destroy: ->
