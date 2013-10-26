@@ -14,6 +14,8 @@ define 'adminLayout', [
     initialize: ->
       @cars = new Cars
       @orders = new Orders
+
+
       @initApplyOrderEvents()
 
       App.socket.on 'order-create', (data) =>

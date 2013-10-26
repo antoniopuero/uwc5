@@ -1,12 +1,20 @@
 define 'orders', ['backbone', 'cs!order'], (Backbone, Order)->
-  class Orders extends Backbone.Collection
-    model: Order
-    url: 'api/orders'
+    class Orders extends Backbone.Collection
+        model: Order
+        url: 'api/orders'
 
-    parse: (attrs, options) ->
-      if attrs.result
-        attrs = attrs.result
+        comparator: (order) ->
+            if order.get('status') is 'ready'
+                return 1
+            if order.get('status') is 'assigned'
+                return 2
+            if order.get('status') is 'completed'
+                return 3
 
-      super attrs, options
+        parse: (attrs, options) ->
+            if attrs.result
+                attrs = attrs.result
 
-  Orders
+            super attrs, options
+
+    Orders

@@ -6,7 +6,13 @@ define 'orderListView', ['cs!orderView'], (OrderView) ->
     # attributes:
     #   'contenteditable': true
 
+    initialize: ->
+      @listenTo @collection, 'change:status', () ->
+        @collection.sort()
+        @render()
+
     onShow: ->
+      console.log 'show'
       @initOrderEvents()
 
     initOrderEvents: ->
