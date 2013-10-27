@@ -1,7 +1,6 @@
 define 'orderListView', ['cs!orderView'], (OrderView) ->
   OrderListView = Marionette.CompositeView.extend
     itemView: OrderView
-    tagName: 'bla'
     # tagName: 'table'
     # className: 'table table-condensed table-bordered table-hover order-table'
     itemViewContainer: "tbody"

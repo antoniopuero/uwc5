@@ -13,7 +13,7 @@ label.error{color:#c7254e}
 #car-map img,#map img{max-width:none}
 .triangle-button{width:0;height:0;border-style:solid;border-width:20px 20px 20px 0;border-color:transparent #8b9196 transparent transparent}
 .order-table{font-size:11px}
-.admin-tools{float:right;}
+.admin-tools{float:right;padding-top:55px;}
 .admin-tools button{display:block;margin:5px 10px}
 #user-orders #orders{margin-top:20px;}
 #user-orders #orders table{width:960px}
@@ -51,4 +51,4 @@ legend{color:#fff}
 .navbar .nav > li > a{text-shadow:none;color:#3b4258}
 .modal{color:#000}
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px){.map{width:100%}
-}
+}.color-white{color:#fff}

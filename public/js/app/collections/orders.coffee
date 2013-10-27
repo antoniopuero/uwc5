@@ -8,6 +8,8 @@ define 'orders', ['backbone', 'cs!order'], (Backbone, Order)->
                 return 3
             if order.get('status') is 'assigned'
                 return 2
+            if order.get('status') is 'processing'
+                return 2
             if order.get('status') is 'completed'
                 return 1
 
