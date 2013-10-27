@@ -7,13 +7,13 @@
   {% if config.env == "production"%}
   <!-- STYLES -->
   <link rel="stylesheet" type="text/css" href="/css/app.min.css">
+  <script src="/js/build/app.js"></script>
   <!-- SCRIPTS -->
   {%else%}
   <!-- STYLES -->
   <link rel="stylesheet" type="text/css" href="/js/components/bootstrap.css/css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="/js/components/bootstrap-timepicker/css/bootstrap-timepicker.css">
   <link rel="stylesheet" type="text/css" href="css/main.css">
-
   <!-- SCRIPTS -->
   <script src="https://maps.googleapis.com/maps/api/js?v=3.11&libraries=geometry,places&sensor=true&language=en"></script>
   <script src="/socket.io/socket.io.js"></script>

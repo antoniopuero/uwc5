@@ -1,4 +1,5 @@
 #content{min-height:800px}
+th{background:#fff}
 i{cursor:pointer}
 .hidden{display:none}
 label.error{color:#c7254e}
@@ -25,9 +26,9 @@ label.error{color:#c7254e}
 #orders table .mini{max-width:5px}
 #orders table .tools{max-width:5px}
 #cars{width:180px;float:right}
+#cars table .grey td{background:#777}
 #cars table .selected td{background:#77c7db}
 #cars table .hovered td{background:#77c7db}
-#cars table .grey td{background:#777}
 #map{-webkit-box-shadow:3px 3px 15px rgba(0,0,0,0.5);box-shadow:3px 3px 15px rgba(0,0,0,0.5)}
 .calculated-price{font-weight:bolder}
 .order-car{margin-top:20px}
@@ -43,3 +44,5 @@ legend{color:#fff}
 .black-text{color:#333}
 .navbar .nav > li > a{text-shadow:none;color:#3b4258}
 .modal{color:#000}
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px){.map{width:100%}
+}
