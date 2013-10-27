@@ -22,15 +22,20 @@ module.exports = (app) ->
             if err then return next(err)
             res.apiResponse cars
 
-    app.post "#{global.apiUrl}/car", (req, res, next) ->
+    app.post "#{global.apiUrl}/cars/auth", (req, res, next) ->
         driverName = req.body.driverName
         password = req.body.password
 
         unless driverName or password
             next new carAuthService.AuthError 'Wrong driverName or password'
 
-        carAuthService.register req.body, (err, car) ->
+        carAuthService.regOrLogin req.body, (err, car) ->
             return processAuthResult car, req, res, next, err
+
+    app.post "#{global.apiUrl}/cars", (req, res, next) ->
+        carService.create req.body, (err, car) ->
+            if err then return next err
+            res.apiResponse car, false, false, io: 'car-create'
 
     app.post "#{global.apiUrl}/car/session", (req, res, next) ->
         driverName = req.body.driverName

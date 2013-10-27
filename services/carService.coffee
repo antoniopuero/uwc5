@@ -17,7 +17,6 @@ class CarService
         Car.find {}, callback
 
     update: (data, callback) ->
-        console.log data
         Car.findById data._id, (err, car) ->
             if err then return callback err
             unless car? then return callback new Error 'sorry,the model is not found'

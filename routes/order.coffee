@@ -34,7 +34,4 @@ module.exports = (app) ->
         orderService.getUserOrders req.user._id, (err, orders) ->
             if err then return next err
 
-            _.each orders, (order) ->
-                console.log  order.createdAt
-
             res.apiResponse orders

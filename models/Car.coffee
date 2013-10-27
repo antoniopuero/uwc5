@@ -23,6 +23,10 @@ CarSchema = new Schema
     orderId:
         type: ObjectId
 
+    password:
+        type: String
+        required: true
+
 CarSchema.pre 'save', (next) ->
     if !@isModified('password') then return next()
 

@@ -13,7 +13,7 @@ class carAuthService
         WRONG_PASSWORD: new AuthError("Wrong password")
 
     login: (driverName, password, callback) ->
-        carService.getByDriverName driverName, (err, car) ->
+        carService.getByDriverName driverName, (err, car) =>
             if err then return callback err
             if not car then return callback @Errors.CAR_NOT_EXIST
 
@@ -21,6 +21,15 @@ class carAuthService
                 if err then return callback @Errors.WRONG_PASSWORD
                 if isMatch then return callback null, car
                 return callback @Errors.WRONG_PASSWORD
+
+    regOrLogin: (data, callback) ->
+        carService.getByDriverName data.driverName, (err, car) =>
+            if err then return callback err
+
+            if car
+                @login data.driverName, data.password, callback
+            else
+                @register data, callback
 
     register: (data, callback) ->
         carService.getByDriverName data.username, (err, driver) =>
