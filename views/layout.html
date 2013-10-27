@@ -43,30 +43,29 @@
   <div class="modal hide" id="myModal">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal">x</button>
-      <h3>Registration</h3>
+      <h3>Регистрация</h3>
     </div>
-    <div class="modal-body">
+    <div class="modal-body well">
       <div class="alert alert-error hidden">
-        Something went wrong:'( Try one more time!
+        Что-то не так. Попробуйте еще раз!
       </div>
       <form method="post" action='' name="login_form" id="register">
-        <p><input type="text" class="span3" name="username" placeholder="Username"></p>
+        <p><input type="text" class="span3" name="username" placeholder="Логин"></p>
         <p><input type="text" class="span3" name="email" placeholder="Email"></p>
-        <p><input type="password" class="span3 password-field" name="password" placeholder="Password"></p>
-        <p><input type="password" class="span3" name="confirm-password" placeholder="Confirm password"></p>
+        <p><input type="password" class="span3 password-field" name="password" placeholder="Пароль"></p>
+        <p><input type="password" class="span3" name="confirm-password" placeholder="Повторите пароль"></p>
         <p>
         <div class="checkbox">
           <label>
-            <input type="checkbox" name="isAdmin"> Admin ?
+            <input type="checkbox" name="isAdmin"> Админ?
           </label>
         </div>
         </p>
         <p>
-          <button type="submit" class="btn btn-primary btn-register">Register</button>
+          <button type="submit" class="btn btn-primary btn-info">Зарегистрироваться</button>
         </p>
       </form>
     </div>
-    <div class="modal-footer"></div>
   </div>
 </script>
 
