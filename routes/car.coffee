@@ -30,7 +30,7 @@ module.exports = (app) ->
         password = req.body.password
 
         unless driverName and password
-            next new carAuthService.AuthError 'Wrong driverName or password'
+            next new carAuthService.AuthError 'Введите имя и пароль'
 
         carAuthService.regOrLogin req.body, (err, car, isNew) ->
             return processAuthResult car, req, res, next, err, isNew
