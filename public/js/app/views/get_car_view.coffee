@@ -7,8 +7,11 @@ define 'getCarView', [
 ], (modalView, CreateOrderView, Order, Marionette, $) ->
   class GetCarView extends CreateOrderView
     template: '#get-car-template'
+
     events: ->
       'click .send': 'send'
+      'keydown input[name="date"]': 'fixTimePicker'
+
     initialize: ->
       $.validator.addMethod 'mobilephone', (value, element) ->
         this.optional(element) || /^\(0\d{2}\)-\d{3}-\d{2}-\d{2}$/.test(value)
@@ -20,10 +23,10 @@ define 'getCarView', [
       $('.js-error-provider').show()
 
     onShow: ->
-      @$el.find('form').submit ->
+      @$('form').submit ->
         return false
 
-      @$el.find('form').validate
+      @$('form').validate
         messages:
           startPlace: 'Выберите место куда подать машину'
           endPlace: 'Выберите куда eхать'
@@ -70,5 +73,6 @@ define 'getCarView', [
       @ui.endPlace.val('')
       @ui.phone.val('')
       @ui.date.val('')
+      @ui.date.timepicker('setDefaultTime')
 
   GetCarView

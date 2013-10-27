@@ -73,46 +73,46 @@
 
   <form id="admin-form" class="form-horizontal admin-form hide">
     <div class="control-group">
-      <label class="control-label" for="inputEmail">Откуда</label>
+      <label class="control-label" for="input-start">Откуда</label>
 
       <div class="controls">
-        <input type="text" class="input-xxlarge typeahead" name="startPlace" placeholder="Откуда ехать"
+        <input type="text" class="input-xxlarge typeahead" id="input-start" name="startPlace" placeholder="Откуда ехать"
                value="Майдан независимости"
                 >
       </div>
     </div>
 
     <div class="control-group">
-      <label class="control-label" for="inputEmail">Куда</label>
+      <label class="control-label" for="input-end">Куда</label>
 
       <div class="controls">
-        <input type="text" class="input-xxlarge typeahead" name="endPlace" placeholder="Куда ехать"
+        <input type="text" class="input-xxlarge typeahead" id="input-end" name="endPlace" placeholder="Куда ехать"
                value="Голосеевская улица"
                 >
       </div>
     </div>
 
     <div class="control-group">
-      <label class="control-label" for="inputEmail">Телефон</label>
+      <label class="control-label" for="input-phone">Телефон</label>
 
       <div class="controls">
-        <input type="text" class="input-xxlarge" name="phone" placeholder="Телефон клиента">
+        <input type="text" class="input-xxlarge" id="input-phone" name="phone" placeholder="Телефон клиента">
       </div>
     </div>
 
     <div class="control-group">
-      <label class="control-label" for="inputEmail">Когда</label>
+      <label class="control-label" for="input-date">Когда</label>
 
       <div class="controls bootstrap-timepicker">
-        <input type="text" class="input-xxlarge" name="date" placeholder="Дата поездки">
+        <input type="text" class="input-xxlarge" id="input-date" name="date" placeholder="Дата поездки">
       </div>
     </div>
 
     <div class="control-group">
-      <label class="control-label " for="inputEmail">Цена</label>
+      <label class="control-label" for="input-price">Цена</label>
 
       <div class="controls">
-        <input type="text" class="input-xxlarge" name="price" placeholder="Цена поездки">
+        <input type="text" class="input-xxlarge" id="input-price" name="price" placeholder="Цена поездки">
       </div>
     </div>
 
@@ -120,7 +120,6 @@
     <div class="control-group">
       <div class="controls">
         <input type="button" class="js-calculate-order btn btn-info" value="Рассчитать">
-        <input type="button" class="js-next-path btn btn-info hide" value="">
 
         <div class="admin__buttons-submit">
           <input type="button" class="js-save-order btn btn-success" value="Поехали">

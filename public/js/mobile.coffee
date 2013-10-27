@@ -39,9 +39,14 @@ auth.on 'click', 'form a', ->
     driverName: auth.find('#login').val()
     password: auth.find('#passwd').val()
 
-  car.save {}, success: (car) ->
+  car.save {}
+  , success: (car) ->
     myCar = car
+    auth.find('.errors').text('')
     window.location.href = '#work'
+  , error: (data, xHr) ->
+    auth.find('.errors').text xHr.responseJSON.error
+
 
 work.on 'click', '.online', ->
   if window.navigator.geolocation?

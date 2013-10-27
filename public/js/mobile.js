@@ -85,7 +85,11 @@
     return car.save({}, {
       success: function(car) {
         myCar = car;
+        auth.find('.errors').text('');
         return window.location.href = '#work';
+      },
+      error: function(data, xHr) {
+        return auth.find('.errors').text(xHr.responseJSON.error);
       }
     });
   });

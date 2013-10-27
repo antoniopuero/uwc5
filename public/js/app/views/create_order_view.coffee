@@ -13,9 +13,9 @@ define [
       "click .js-save-order": "saveOrder"
       "click .js-cancel-order": "cancelOrder"
       "click .js-calculate-order": "calculateDuration"
-      "click .js-next-path": "nextPath"
       "click .js-create-order": "createOrder"
       "click .js-hide-error": "hideError"
+      'keydown input[name="date"]': 'fixTimePicker'
 
     ui:
       startPlace: 'input[name="startPlace"]'
@@ -32,14 +32,11 @@ define [
     onShow: ->
       @initSearch()
 
-
       if @ui.phone.length
         @ui.phone.inputmask mask : "(099)-999-99-99"
 
       if @ui.date.length
         @ui.date.timepicker showMeridian: false
-
-
 
       # @createOrder()
       # @calculateDuration()
@@ -125,10 +122,8 @@ define [
       data
 
     toggleForm: ->
-      @$el.find('form').toggle();
-      @$el.find('.well').toggle();
-
-    nextPath: ->
+      @$('form').toggle()
+      @$('.well').toggle()
 
     getLatLngFromAddress: (address) ->
       deferred = new jQuery.Deferred()
@@ -189,6 +184,9 @@ define [
       @ui.price.val('')
       @ui.date.val('')
       @ui.phone.val('')
+      @ui.date.timepicker('setDefaultTime')
 
+    fixTimePicker: (e) ->
+      @ui.date.timepicker('hideWidget') if e.keyCode == 9
 
   CreateOrderView
