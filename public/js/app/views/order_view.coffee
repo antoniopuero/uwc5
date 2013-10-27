@@ -16,8 +16,11 @@ define 'orderView', ['text!/js/app/templates/order.html', 'marionette'], (orderT
       else
         @$el.removeClass('selected')
 
+      @$el.removeClass()
       if @model.get('status') is 'ready'
         @$el.addClass('success')
+      if @model.get('status') is 'processing'
+        @$el.addClass('warning')
       if @model.get('status') is 'assigned'
         @$el.addClass('warning')
       if @model.get('status') is 'completed'

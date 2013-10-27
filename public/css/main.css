@@ -23,10 +23,12 @@ label.error{color:#c7254e}
 #orders table td{white-space:nowrap;overflow:hidden}
 #orders table .title{max-width:150px}
 #orders table .small{max-width:20px}
+#orders table .time{max-width:10px}
 #orders table .phone{max-width:55px}
 #orders table .mini{max-width:5px}
-#orders table .tools{max-width:5px}
-#cars{width:180px;float:right}
+#orders table .status{max-width:35px}
+#cars{float:right}
+#cars table{width:180px}
 #cars table .grey td{background:#777}
 #cars table .selected td{background:#77c7db}
 #cars table .hovered td{background:#77c7db}
