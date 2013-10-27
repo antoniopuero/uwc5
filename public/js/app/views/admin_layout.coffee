@@ -22,12 +22,15 @@ define 'adminLayout', [
       App.socket.on 'order-create', (data) =>
         @orders.add new Order(data)
 
-      App.socket.on 'car-create', (data) =>
-        console.log 'car create'
-        @cars.add new Car(data)
+      App.socket.on 'order-update', (data) =>
+        order = @orders.get(data._id)
+        order.set data
 
       App.socket.on 'order-delete', (data) =>
         @orders.remove new Order(data)
+
+      App.socket.on 'car-create', (data) =>
+        @cars.add new Car(data)
 
     events:
       'click .js-edit-order-path': 'editOrderPath'
@@ -71,6 +74,9 @@ define 'adminLayout', [
       unless @selectedCar? then return @errorProvider 'Выберите машину, пожалуйста'
       unless (@selectedOrder.get('status') is 'ready') then return @errorProvider 'Заказ должен быть свободным (зеленым)'
       unless (@selectedCar.get('status') is 'ready') then return @errorProvider 'Таксист должен быть онлайн и свободным (зеленым)'
+
+      @selectedOrder.set 'selected', false if @selectedOrder
+      @selectedCar.set 'selected', false if @selectedCar
 
       @selectedOrder.save
         selected: false

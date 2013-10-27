@@ -29,7 +29,8 @@ class carAuthService
             if car
                 @login data.driverName, data.password, callback
             else
-                @register data, callback
+                @register data, (err, car) ->
+                    callback err, car, true
 
     register: (data, callback) ->
         carService.getByDriverName data.username, (err, driver) =>

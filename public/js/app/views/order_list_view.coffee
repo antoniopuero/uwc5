@@ -5,9 +5,17 @@ define 'orderListView', ['cs!orderView'], (OrderView) ->
     className: 'table table-condensed table-bordered table-hover order-table'
 
     initialize: ->
+
       @listenTo @collection, 'change:status', () ->
         @collection.sort()
         @render()
+
+    appendHtml: (collectionView, itemView, index) ->
+      collectionView.$el.prepend(itemView.el)
+
+    onRender: ->
+      @collection.each (model)=>
+        console.log model.get 'status'
 
     onShow: ->
       @initOrderEvents()

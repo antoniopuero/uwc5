@@ -5,11 +5,11 @@ define 'orders', ['backbone', 'cs!order'], (Backbone, Order)->
 
         comparator: (order) ->
             if order.get('status') is 'ready'
-                return 1
+                return 3
             if order.get('status') is 'assigned'
                 return 2
             if order.get('status') is 'completed'
-                return 3
+                return 1
 
         parse: (attrs, options) ->
             if attrs.result

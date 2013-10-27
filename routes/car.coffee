@@ -1,7 +1,7 @@
 carService = require "#{global.path.root}/services/carService"
 carAuthService = require "#{global.path.root}/services/carAuthService"
 
-processAuthResult = (car, req, res, next, err)->
+processAuthResult = (car, req, res, next, err, isNew)->
     if err
         if err instanceof carAuthService.AuthError
             errorText = err.message
@@ -11,7 +11,10 @@ processAuthResult = (car, req, res, next, err)->
     else
         if car
             req.session.carId = car.id.toString()
-            res.apiResponse car.toJSON(), false, false, io: 'car-create'
+            if isNew
+                res.apiResponse car.toJSON(), false, false, io: 'car-create'
+            else
+                res.apiResponse car.toJSON()
         else
             res.apiResponse("ok")
 
@@ -29,8 +32,8 @@ module.exports = (app) ->
         unless driverName or password
             next new carAuthService.AuthError 'Wrong driverName or password'
 
-        carAuthService.regOrLogin req.body, (err, car) ->
-            return processAuthResult car, req, res, next, err
+        carAuthService.regOrLogin req.body, (err, car, isNew) ->
+            return processAuthResult car, req, res, next, err, isNew
 
     app.post "#{global.apiUrl}/cars", (req, res, next) ->
         carService.create req.body, (err, car) ->

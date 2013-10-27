@@ -4,8 +4,8 @@ define 'orderView', ['text!/js/app/templates/order.html', 'marionette'], (orderT
 
     template: orderTemplate
 
-    attributes:
-      contenteditable: true
+    # attributes:
+    #   contenteditable: true
 
     initialize: ->
       @listenTo @model, 'change', @render

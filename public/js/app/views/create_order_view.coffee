@@ -103,7 +103,7 @@ define [
       @model.set @prepareModelData()
       @model.save @model.toJSON(),
         success: =>
-          @collection.add @model
+          @collection.push @model
           @toggleForm()
           @resetForm()
           @ui.errorProvider.hide()
