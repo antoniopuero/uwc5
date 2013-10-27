@@ -82,19 +82,17 @@
       driverName: auth.find('#login').val(),
       password: auth.find('#passwd').val()
     });
-    car.save({}, {
+    return car.save({}, {
       success: function(car) {
         myCar = car;
         return window.location.href = '#work';
       }
     });
-    return false;
   });
 
   work.on('click', '.online', function() {
     var _this = this;
     if (window.navigator.geolocation != null) {
-      console.log(myCar);
       myCar.set('status', 'ready');
       myCar.save;
       updateLocation();
@@ -152,7 +150,8 @@
   work.on('click', '.decline', function() {
     $(this).hide();
     work.find('.accept').hide();
-    work.find('.finish').show();
+    work.find('.finish').hide();
+    work.find('.order-info').hide();
     myCar.set('status', 'ready');
     myCar.save();
     myOrder.set('status', 'ready');
