@@ -11,5 +11,8 @@
     "bootstrap-stylus": "~3.0.0",
     "backbone.marionette": "~1.1.0",
     "jquery.inputmask": "~2.3.0"
+  },
+  "resolutions": {
+    "jquery": "~2.0.3"
   }
 }
