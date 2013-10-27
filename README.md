@@ -8,6 +8,7 @@ uwc V (TaxiSky)
 4. Grunt (`npm install -g grunt-cli grunt`)
 5. Coffee-script (`npm install -g coffee-script`)
 6. Bower (`npm install -g bower`)
+
 Инсталяция
 -----------
 1. Сделать клон репозитория проекта
