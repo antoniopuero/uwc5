@@ -1,4 +1,4 @@
-define 'users', ['backbone', 'cs!user'], (Backbone, User)->
+define ['backbone', 'cs!user'], (Backbone, User)->
   class Users extends Backbone.Collection
     model: User
     url: 'api/users'

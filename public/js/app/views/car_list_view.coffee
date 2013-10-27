@@ -1,4 +1,4 @@
-define 'carListView', ['marionette', 'cs!carView'], (Marionette, CarView) ->
+define ['marionette', 'cs!carView'], (Marionette, CarView) ->
   class CarListView extends Marionette.CompositeView
 
     initialize: ->

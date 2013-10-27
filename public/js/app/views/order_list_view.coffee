@@ -1,4 +1,4 @@
-define 'orderListView', ['cs!orderView'], (OrderView) ->
+define ['cs!orderView'], (OrderView) ->
   OrderListView = Marionette.CompositeView.extend
     itemView: OrderView
     # tagName: 'table'

@@ -1,4 +1,4 @@
-define 'userOrderView', ['marionette', 'cs!orderView'], (Marionette, OrderView) ->
+define ['marionette', 'cs!orderView'], (Marionette, OrderView) ->
   class UserOrderView extends OrderView
     attributes: {}
 

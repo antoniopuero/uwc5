@@ -1,4 +1,4 @@
-define 'orderView', ['text!/js/app/templates/order.html', 'marionette'], (orderTemplate, Marionette) ->
+define ['text!app/templates/order.html', 'marionette'], (orderTemplate, Marionette) ->
   Marionette.ItemView.extend
     tagName: 'tr'
 

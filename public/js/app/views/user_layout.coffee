@@ -1,4 +1,4 @@
-define 'userLayout', [
+define [
   'cs!cars'
   'cs!getCarView'
   'cs!carMapView'

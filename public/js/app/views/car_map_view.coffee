@@ -1,4 +1,4 @@
-define 'carMapView', ['marionette', 'cs!dummyView'], (Marionette, DummyView) ->
+define ['marionette', 'cs!dummyView'], (Marionette, DummyView) ->
   class CarMapView extends Marionette.CollectionView
     id: 'car-map'
     itemView: DummyView

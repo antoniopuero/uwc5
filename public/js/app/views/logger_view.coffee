@@ -1,4 +1,4 @@
-define 'loggerView', [
+define [
   'marionette'
 ], (Marionette) ->
   Marionette.ItemView.extend

@@ -1,5 +1,6 @@
-requirejs.config({
-    baseUrl: 'js/',
+({
+    baseUrl: ".",
+    name: "main",
     paths: {
        // THIRD PART
         jquery: 'components/jquery/jquery',
@@ -40,8 +41,8 @@ requirejs.config({
         modalView: 'app/views/modal_view',
         orderListView: 'app/views/order_list_view',
         orderView: 'app/views/order_view'
-	},
-	shim: {
+    },
+    shim: {
         bootstrap: {
             deps: ['jquery']
         },
@@ -62,12 +63,7 @@ requirejs.config({
         getCarView: {
             deps: ['validator']
         }
-	},
-	urlArgs: "bust=" + (new Date()).getTime()
-});
-
-requirejs(['cs!app/app'], function (App) {
-    return $(function(){
-        App.start();
-    });
-});
+    },
+    stubModules: ['cs', 'coffee-script'],
+    out: "./public/js/main-built.js",
+})

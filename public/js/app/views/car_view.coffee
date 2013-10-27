@@ -1,4 +1,4 @@
-define 'carView', ['marionette', 'text!/js/app/templates/car.html'], (Marionette, carTemplate) ->
+define ['marionette', 'text!app/templates/car.html'], (Marionette, carTemplate) ->
   class CarView extends Marionette.ItemView
     tagName: 'tr'
     template: carTemplate

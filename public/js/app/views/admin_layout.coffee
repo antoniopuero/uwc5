@@ -1,4 +1,4 @@
-define 'adminLayout', [
+define [
   'cs!cars'
   'cs!orders'
   'cs!order'

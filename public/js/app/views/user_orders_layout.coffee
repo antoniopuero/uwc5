@@ -1,4 +1,4 @@
-define 'userOrdersLayout', [
+define [
   'cs!userLayout'
   'cs!cars'
   'cs!myOrders'

@@ -1,4 +1,4 @@
-define 'orders', ['backbone', 'cs!order'], (Backbone, Order)->
+define ['backbone', 'cs!order'], (Backbone, Order)->
     class Orders extends Backbone.Collection
         model: Order
         url: 'api/orders'

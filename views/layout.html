@@ -4,10 +4,12 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
   <meta default-charset="utf-8">
   <title>UWC V</title>
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.11&libraries=geometry,places&sensor=true&language=en"></script>
+  <script src="/socket.io/socket.io.js"></script>
   {% if config.env == "production"%}
   <!-- STYLES -->
   <link rel="stylesheet" type="text/css" href="/css/app.min.css">
-  <script src="/js/build/app.js"></script>
+  <script data-main="js/main-built.js" src="/js/require.js"></script>
   <!-- SCRIPTS -->
   {%else%}
   <!-- STYLES -->
@@ -15,8 +17,6 @@
   <link rel="stylesheet" type="text/css" href="/js/components/bootstrap-timepicker/css/bootstrap-timepicker.css">
   <link rel="stylesheet" type="text/css" href="css/main.css">
   <!-- SCRIPTS -->
-  <script src="https://maps.googleapis.com/maps/api/js?v=3.11&libraries=geometry,places&sensor=true&language=en"></script>
-  <script src="/socket.io/socket.io.js"></script>
   <script data-main="js/main" src="/js/require.js"></script>
   {%endif%}
 </head>

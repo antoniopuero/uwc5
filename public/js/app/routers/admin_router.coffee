@@ -1,4 +1,4 @@
-define 'adminRouter', ['cs!adminLayout', 'marionette'], (AdminLayout, Marionette) ->
+define ['cs!app/views/admin_layout', 'marionette'], (AdminLayout, Marionette) ->
   class AdminRouter extends Marionette.AppRouter
     routes:
       '': 'index'

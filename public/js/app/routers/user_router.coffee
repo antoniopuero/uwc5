@@ -1,4 +1,4 @@
-define 'userRouter', ['cs!userLayout', 'cs!userOrdersLayout', 'marionette'], (UserLayout, UserOrdersLayout, Marionette) ->
+define ['cs!userLayout', 'cs!userOrdersLayout', 'marionette'], (UserLayout, UserOrdersLayout, Marionette) ->
   class UserRouter extends Marionette.AppRouter
     routes:
       '': 'index'

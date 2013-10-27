@@ -1,5 +1,6 @@
 .idea
 node_modules
 public/js/components
+public/js/main-built.js
 public/css
 atlassian-ide-plugin.xml

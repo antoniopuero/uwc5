@@ -1,4 +1,4 @@
-define 'getCarView', [
+define [
   'cs!modalView'
   'cs!createOrderView'
   'cs!order'

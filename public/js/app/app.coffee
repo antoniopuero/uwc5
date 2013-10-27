@@ -1,7 +1,7 @@
 define [
-  'cs!navView'
-  'cs!adminRouter'
-  'cs!userRouter'
+  'cs!app/views/nav_view'
+  'cs!app/routers/admin_router'
+  'cs!app/routers/user_router'
 ], (NavView, AdminRouter, UserRouter) ->
   App = new Marionette.Application()
 
