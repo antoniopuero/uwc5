@@ -4,6 +4,7 @@ app = module.exports = express()
 server = require('http').createServer(app)
 
 io = require('socket.io').listen(server);
+io.set 'log level', 1
 
 fs = require 'fs'
 cons = require 'consolidate'

@@ -49,6 +49,15 @@ OrderSchema = new Schema
     carId:
         type: String
 
+    createdAt:
+        type: String
+
+OrderSchema.pre 'save', (next)->
+    if @isNew
+        date = new Date
+        @createdAt = date.getHours() + ':' + date.getMinutes() + '  ' + date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear()
+    next()
+
 OrderSchema.methods.getCarsNearby = (callback) ->
     Car.near(@startPoint).exec callback
 

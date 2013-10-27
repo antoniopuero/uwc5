@@ -34,7 +34,7 @@ define [
 
 
       if @ui.phone.length
-        @ui.phone.inputmask mask : "(099)-999-99-99"
+        @ui.phone.inputmask mask : "+38(099)-999-99-99"
 
       if @ui.date.length
         @ui.date.timepicker showMeridian: false
@@ -69,8 +69,7 @@ define [
       jQuery.when(
         @getLatLngFromAddress(@ui.endPlace.val()),
         @getLatLngFromAddress(@ui.startPlace.val()),
-      ).done (endLatLng, startLatLng) =>
-
+      ).done((endLatLng, startLatLng) =>
         @getPathBetweenPoints startLatLng, endLatLng, (distanceResult, status) =>
           unless status is 'OK'
             return @errorProvider status + ': cannot create route between this points'
@@ -94,6 +93,8 @@ define [
 
           if typeof callback is 'function'
             callback()
+      ).fail () =>
+        @errorProvider 'Не удалось определить место'
 
     clearLine: ->
       App.map.line.setMap null
@@ -131,8 +132,7 @@ define [
 
     getLatLngFromAddress: (address) ->
       deferred = new jQuery.Deferred()
-      @geocoder.geocode address: address, region: 'ua', language: 'ru', (results, status) ->
-
+      @geocoder.geocode address: address, region: 'ua', language: 'ru', (results, status) =>
         unless status is 'OK'
           return deferred.reject status
 

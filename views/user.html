@@ -53,6 +53,10 @@
 
 <script type="text/template" id="user-template">
 <div class="row" id="map"></div>
+<div class="alert alert-error js-error-provider hide">
+  <a class="close js-hide-error" data-dismiss="">×</a>
+  <strong>Error ! </strong><span class="js-error-text"> This is a fatal error.</span>
+</div>
 <div class="row-fluid order-car">
   <div class="span4">
     <h4>Привет!</h4>
@@ -79,18 +83,20 @@
   <td class="small js-date"><%= date %></td>
   <td class="small js-price"><%= price%> грн</td>
   <td class="phone js-phone"><%= phone %></td>
+  <td class="phone js-phone"><%= createdAt %></td>
+  <td class="phone js-phone"><%= status %></td>
 </script>
 
 <script type="text/template" id="get-car-template">
 <form>
 <fieldset>
   <legend>Заказать машину</legend>
-  <input class="typeahead input-xlarge" type="text" name="startPlace" placeholder="Откуда ехать">
-  <input class="typeahead input-xlarge" type="text" name="endPlace" placeholder="Куда ехать">
+  <input class="typeahead input-xlarge" type="text" name="startPlace" placeholder="Откуда ехать" autocomplete="off">
+  <input class="typeahead input-xlarge" type="text" name="endPlace" placeholder="Куда ехать" autocomplete="off">
   <div class="controls bootstrap-timepicker">
-      <input class="typeahead input-xlarge" type="text" name="date" placeholder="Время">
+      <input class="typeahead input-xlarge" type="text" name="date" placeholder="Время" autocomplete="off">
   </div>
-  <input class="input-xlarge" type="text" name="phone" placeholder="Телефон">
+  <input class="input-xlarge" type="text" name="phone" placeholder="Телефон" autocomplete="off">
   <button class="btn send btn-info">Отправить</button>
 </fieldset>
 </form>
