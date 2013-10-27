@@ -10,7 +10,6 @@ define 'orderListView', ['cs!orderView'], (OrderView) ->
         @render()
 
     onShow: ->
-      console.log 'show'
       @initOrderEvents()
 
     initOrderEvents: ->

@@ -121,6 +121,7 @@ app.use addUserToLocals = (req, res, next) ->
 
 app.use (req, res, next)->
     res.apiResponse = (result, code=200, error=null, params)->
+        console.log params
         if params?.io
             global.io.sockets.emit params.io, result
 

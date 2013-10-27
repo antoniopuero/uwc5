@@ -1,16 +1,50 @@
 carService = require "#{global.path.root}/services/carService"
+carAuthService = require "#{global.path.root}/services/carAuthService"
 
+processAuthResult = (car, req, res, next, err)->
+    if err
+        if err instanceof carAuthService.AuthError
+            errorText = err.message
+        else
+            errorText = "Unexpected error."
+        return res.apiResponse(null, 401, errorText)
+    else
+        if car
+            req.session.carId = car.id.toString()
+            res.apiResponse car.toJSON(), false, false, io: 'car-create'
+        else
+            res.apiResponse("ok")
 
 module.exports = (app) ->
+
     app.get "#{global.apiUrl}/cars", (req, res, next) ->
         carService.getAll (err, cars) ->
             if err then return next(err)
             res.apiResponse cars
 
     app.post "#{global.apiUrl}/car", (req, res, next) ->
-        carService.create carData, (err, car) ->
-            if err then return next err
-            res.apiResponse car, false, false, io: 'car-create'
+        driverName = req.body.driverName
+        password = req.body.password
+
+        unless driverName or password
+            next new carAuthService.AuthError 'Wrong driverName or password'
+
+        carAuthService.register req.body, (err, car) ->
+            return processAuthResult car, req, res, next, err
+
+    app.post "#{global.apiUrl}/car/session", (req, res, next) ->
+        driverName = req.body.driverName
+        password = req.body.password
+
+        unless driverName or password
+            next new carAuthService.authError 'Wrong driverName or password'
+
+        carAuthService.login driverName, password, (err, car) ->
+            return processAuthResult car, req, res, next, err
+
+    app.post "/#{global.apiUrl}", (req, res, next)->
+        req.session.carId = null
+        res.apiResponse("ok")
 
     app.put "#{global.apiUrl}/cars/:carId", (req, res, next) ->
         carService.update req.body, (err, car) ->
@@ -25,3 +59,6 @@ module.exports = (app) ->
             if err then return next err
             unless car? then return next new Error 'sorry,the model is not found'
             res.apiResponse car, false, false, io: 'car-create'
+
+
+

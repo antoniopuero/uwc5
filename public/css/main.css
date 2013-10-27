@@ -21,7 +21,7 @@ label.error{color:#c7254e}
 #orders table td{white-space:nowrap;overflow:hidden}
 #orders table .title{max-width:150px}
 #orders table .small{max-width:20px}
-#orders table .phone{max-width:40px}
+#orders table .phone{max-width:55px}
 #orders table .mini{max-width:5px}
 #orders table .tools{max-width:5px}
 #cars{width:180px;float:right}

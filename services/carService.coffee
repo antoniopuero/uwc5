@@ -8,6 +8,11 @@ class CarService
     get: (id, callback)->
         Car.findById(id, callback)
 
+    getByDriverName: (driverName, callback) ->
+        Car.find {driverName: driverName}, (err, cars) ->
+            if err then return callback err
+            callback null, cars[0]
+
     getAll: (callback) ->
         Car.find {}, callback
 

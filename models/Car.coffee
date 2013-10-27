@@ -1,15 +1,14 @@
 mongoose = require 'mongoose'
 Schema = mongoose.Schema
 ObjectId = Schema.ObjectId
+passwordHash = require 'password-hash'
 
 CarSchema = new Schema
     point:
         type: [Number]
-        required: true
 
     carTitle:
         type: String
-        required: true
 
     status:
         type: String
@@ -19,8 +18,21 @@ CarSchema = new Schema
     driverName:
         type: String
         required: true
-        default: 'ashot'
+        default: 'car driver ruben'
+
     orderId:
         type: ObjectId
+
+CarSchema.pre 'save', (next) ->
+    if !@isModified('password') then return next()
+
+    hash = passwordHash.generate @password
+
+    @password = hash
+
+    next()
+
+CarSchema.methods.comparePasswords = (candidatePassword, callback) ->
+    callback null, passwordHash.verify candidatePassword, @password
 
 module.exports = global.connections.common.model 'Car', CarSchema
