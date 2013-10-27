@@ -12,23 +12,61 @@
   <!-- jQuery and jQuery Mobile -->
   <script src="js/components/jquery/jquery.js"></script>
   <script src="js/components/jquery-mobile-bower/js/jquery.mobile-1.3.2.js"></script>
+  <script src="js/components/underscore/underscore.js"></script>
+  <script src="js/components/backbone/backbone.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
 <!-- Home -->
-<div data-role="page" id="page1">
+<div data-role="page" id="auth">
   <div data-theme="a" data-role="header">
     <h3>
       TaxiSky
     </h3>
   </div>
   <div data-role="content">
-    <a data-role="button" href="#page1">
-      Принять заказ
-    </a>
-    <a data-role="button" href="#page1">
-      Завершить заказ
-    </a>
+    <form>
+      <input type="text" name="text-6" id="login" value="" placeholder="Логин">
+      <input type="password" name="text-6" id="passwd" value="" placeholder="Пароль">
+      <a href="#" data-role="button" data-theme="b">Войти</a>
+    </form>
   </div>
 </div>
+
+<div data-role="page" id="work">
+  <div data-theme="a" data-role="header">
+    <h3>
+      TaxiSky
+    </h3>
+  </div>
+  <div data-role="content">
+    <a data-role="button" href="#" class="online">
+      Начать работу
+    </a>
+
+
+    <div class="order-info" style="display: none"></div>
+    <a data-role="button" href="#" class="accept" style="display: none">
+      Принять заказ
+    </a>
+
+    <a data-role="button" href="#" class="decline" style="display: none">
+      Отменить заказ
+    </a>
+
+
+    <a data-role="button" href="#" class="finish" style="display: none">
+      Завершить заказ
+    </a>
+
+    <a data-role="button" href="#" class="offline" style="display: none">
+      Завершить работу
+    </a>
+  </div>
+  <div data-role="popup" id="no-geoapi" class="ui-content">Ваш браузер не поддерживается</div>
+</div>
+
+
+<script src="js/mobile.js"></script>
 </body>
 </html>
