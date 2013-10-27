@@ -11,12 +11,13 @@ label.error{color:#c7254e}
 .table tr{cursor:pointer}
 .admin__buttons-submit{float:right;margin-right:235px}
 #car-map img,#map img{max-width:none}
+#login .text-center{color:#3b4258}
 .triangle-button{width:0;height:0;border-style:solid;border-width:20px 20px 20px 0;border-color:transparent #8b9196 transparent transparent}
 .order-table{font-size:11px}
 .admin-tools{float:right;padding-top:55px;}
 .admin-tools button{display:block;margin:5px 10px}
 #user-orders #orders{margin-top:20px;}
-#user-orders #orders table{width:960px}
+#user-orders #orders table{width:940px}
 #orders{color:#333;float:left;}
 #orders table{width:700px;}
 #orders table .selected td{background:#77c7db}

@@ -19,25 +19,26 @@
     </li>
 
     <li>
-      <a class="logout" href="#logout">Logout</a>
+      <a class="logout" href="#logout">Выйти</a>
     </li>
     {% else %}
     <li>
       <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-        Sign In
+        Войти
         <b class="caret"></b>
       </a>
 
       <div class="span4 well dropdown-menu">
         <form class="text-center" method="POST" action="" accept-charset="UTF-8" id="login">
           <div class="alert alert-error hidden">
-            Incorrect Username or Password!
+            Неправильный логин или пароль!
           </div>
-          <input type="text" class="span4" name="username" placeholder="Username">
-          <input type="password" class="span4" name="password" placeholder="Password">
-          <button type="submit" class="btn btn-info btn-block btn-login">Sign In</button>
-          <div class="text-center">or</div>
-          <button class="btn btn-info btn-primary btn-block" data-toggle="modal" href="#myModal">Sign Up</button>
+          <input type="text" class="span4" name="username" placeholder="Логин">
+          <input type="password" class="span4" name="password" placeholder="Пароль">
+          <button type="submit" class="btn btn-info btn-block btn-login">Войти</button>
+          <div class="text-center">или</div>
+          <button class="btn btn-info btn-primary btn-block" data-toggle="modal" href="#myModal">Зарегистрироваться
+          </button>
         </form>
       </div>
     </li>
@@ -52,22 +53,22 @@
 <div id="user"></div>
 
 <script type="text/template" id="user-template">
-<div class="" id="map"></div>
-<div class="alert alert-error js-error-provider hide">
-  <a class="close js-hide-error" data-dismiss="">×</a>
-  <strong>Error ! </strong><span class="js-error-text"> This is a fatal error.</span>
-</div>
-<div class="row-fluid order-car">
-  <div class="span4">
-    <h4>Привет!</h4>
-    Ты можешь заказать машину просто заполнив эту форму.<br>
-    Спасибо за доверие! :)
+  <div class="" id="map"></div>
+  <div class="alert alert-error js-error-provider hide">
+    <a class="close js-hide-error" data-dismiss="">×</a>
+    <strong>Error ! </strong><span class="js-error-text"> This is a fatal error.</span>
   </div>
-  <div class="span3">
-    <div id="get-car"></div>
+  <div class="row-fluid order-car">
+    <div class="span4">
+      <h4>Привет!</h4>
+      Ты можешь заказать машину просто заполнив эту форму.<br>
+      Спасибо за доверие! :)
+    </div>
+    <div class="span3">
+      <div id="get-car"></div>
+    </div>
   </div>
-</div>
-<div id="modal"></div>
+  <div id="modal"></div>
 </script>
 
 <script type="text/template" id="user-orders-template">
@@ -87,31 +88,32 @@
 </script>
 
 <script type="text/template" id="get-car-template">
-<form>
-<fieldset>
-  <legend>Заказать машину</legend>
-  <input class="typeahead input-xlarge" type="text" name="startPlace" placeholder="Откуда ехать" autocomplete="off">
-  <input class="typeahead input-xlarge" type="text" name="endPlace" placeholder="Куда ехать" autocomplete="off">
-  <div class="controls bootstrap-timepicker">
-      <input class="typeahead input-xlarge" type="text" name="date" placeholder="Время" autocomplete="off">
-  </div>
-  <input class="input-xlarge" type="text" name="phone" placeholder="Телефон" autocomplete="off">
-  <button class="btn send btn-info">Отправить</button>
-</fieldset>
-</form>
+  <form>
+    <fieldset>
+      <legend>Заказать машину</legend>
+      <input class="typeahead input-xlarge" type="text" name="startPlace" placeholder="Откуда ехать" autocomplete="off">
+      <input class="typeahead input-xlarge" type="text" name="endPlace" placeholder="Куда ехать" autocomplete="off">
+
+      <div class="controls bootstrap-timepicker">
+        <input class="typeahead input-xlarge" type="text" name="date" placeholder="Время" autocomplete="off">
+      </div>
+      <input class="input-xlarge" type="text" name="phone" placeholder="Телефон" autocomplete="off">
+      <button class="btn send btn-info">Отправить</button>
+    </fieldset>
+  </form>
 </script>
 
 <script type="text/template" id="order-list">
- <table id="order-list" class="table table-condensed table-bordered table-hover order-table">
+  <table id="order-list" class="table table-condensed table-bordered table-hover order-table">
     <thead>
-      <tr>
-        <th>Откуд ехать</th>
-        <th>Куда ехать</th>
-        <th>Цена</th>
-        <th>Телефон</th>
-        <th>Дата</th>
-        <th>Статус</th>
-      </tr>
+    <tr>
+      <th>Откуд ехать</th>
+      <th>Куда ехать</th>
+      <th>Цена</th>
+      <th>Телефон</th>
+      <th>Дата</th>
+      <th>Статус</th>
+    </tr>
     </thead>
     <tbody id=""></tbody>
   </table>

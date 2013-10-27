@@ -11,25 +11,26 @@
     </li>
 
     <li>
-      <a class="logout" href="#logout">Выход</a>
+      <a class="logout" href="#logout">Выйти</a>
     </li>
     {% else %}
     <li>
       <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-        Вход
+        Войти
         <b class="caret"></b>
       </a>
 
       <div class="span4 well dropdown-menu">
         <form class="text-center" method="POST" action="" accept-charset="UTF-8" id="login">
           <div class="alert alert-error hidden">
-            Incorrect Username or Password!
+            Неправильный логин или пароль!
           </div>
-          <input type="text" class="span4" name="username" placeholder="Username">
-          <input type="password" class="span4" name="password" placeholder="Password">
-          <button type="submit" class="btn btn-info btn-block btn-login">Вход</button>
-          <div class="text-center">or</div>
-          <button class="btn btn-info btn-primary btn-block" data-toggle="modal" href="#myModal">Регистрация</button>
+          <input type="text" class="span4" name="username" placeholder="Логин">
+          <input type="password" class="span4" name="password" placeholder="Пароль">
+          <button type="submit" class="btn btn-info btn-block btn-login">Войти</button>
+          <div class="text-center">или</div>
+          <button class="btn btn-info btn-primary btn-block" data-toggle="modal" href="#myModal">Зарегистрироваться
+          </button>
         </form>
       </div>
     </li>
