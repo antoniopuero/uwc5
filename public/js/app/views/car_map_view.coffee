@@ -5,6 +5,7 @@ define 'carMapView', ['marionette', 'cs!dummyView'], (Marionette, DummyView) ->
 
     initialize: ->
       @points = []
+      @listenTo @collection, 'add remove change:point', @render
 
     renderPoints: ->
       _.each @points, (point) =>

@@ -1,4 +1,5 @@
 #content{min-height:800px}
+th{background:#fff}
 i{cursor:pointer}
 .hidden{display:none}
 label.error{color:#c7254e}
@@ -14,20 +15,23 @@ label.error{color:#c7254e}
 .order-table{font-size:11px}
 .admin-tools{float:right;}
 .admin-tools button{display:block;margin:5px 20px}
-#user-orders #orders{margin-top:20px}
+#user-orders #orders{margin-top:20px;}
+#user-orders #orders table{width:960px}
 #orders{color:#333;float:left;}
 #orders table{width:700px;}
 #orders table .selected td{background:#77c7db}
 #orders table td{white-space:nowrap;overflow:hidden}
 #orders table .title{max-width:150px}
 #orders table .small{max-width:20px}
+#orders table .time{max-width:10px}
 #orders table .phone{max-width:55px}
 #orders table .mini{max-width:5px}
-#orders table .tools{max-width:5px}
-#cars{width:180px;float:right}
+#orders table .status{max-width:35px}
+#cars{float:right}
+#cars table{width:180px}
+#cars table .grey td{background:#777}
 #cars table .selected td{background:#77c7db}
 #cars table .hovered td{background:#77c7db}
-#cars table .grey td{background:#777}
 #map{-webkit-box-shadow:3px 3px 15px rgba(0,0,0,0.5);box-shadow:3px 3px 15px rgba(0,0,0,0.5)}
 .calculated-price{font-weight:bolder}
 .order-car{margin-top:20px}
@@ -43,3 +47,5 @@ legend{color:#fff}
 .black-text{color:#333}
 .navbar .nav > li > a{text-shadow:none;color:#3b4258}
 .modal{color:#000}
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px){.map{width:100%}
+}

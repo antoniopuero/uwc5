@@ -32,6 +32,13 @@ define 'adminLayout', [
       App.socket.on 'car-create', (data) =>
         @cars.add new Car(data)
 
+      App.socket.on 'car-update', (data) =>
+        car = @cars.get(data._id)
+        car.set data
+
+      App.socket.on 'car-delete', (data) =>
+        @cars.remove new Car(data)
+
     events:
       'click .js-edit-order-path': 'editOrderPath'
       'click .js-apply-order': 'applyOrder'
@@ -64,7 +71,10 @@ define 'adminLayout', [
       App.map = new google.maps.Map(mapDiv, mapOptions)
 
     editOrderPath: ->
-      App.map.line.setEditable(true) if App.map.line
+      if App.map.line and @selectedOrder.get('status') is 'ready'
+        App.map.line.setEditable(true)
+      else
+        @errorProvider 'Выберите свободный заказ'
 
     errorProvider: (error) ->
       alert error

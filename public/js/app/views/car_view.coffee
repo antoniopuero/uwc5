@@ -39,6 +39,9 @@ define 'carView', ['marionette', 'text!/js/app/templates/car.html'], (Marionette
       else
         @$el.removeClass('selected')
 
+
+      @$el.removeClass()
+
       if @model.get('status') is 'ready'
         @$el.addClass('success')
 

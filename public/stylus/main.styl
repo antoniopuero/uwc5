@@ -1,5 +1,7 @@
 #content
     min-height: 800px
+th
+ background: #fff
 i
     cursor: pointer
 .hidden
@@ -58,6 +60,9 @@ label.error
 #user-orders #orders
     margin-top: 20px
 
+    table
+        width: 960px
+
 #orders
     color: #333
     float: left
@@ -74,27 +79,29 @@ label.error
             max-width: 150px
         .small
             max-width: 20px
+        .time
+            max-width: 10px
         .phone
             max-width: 55px
         .mini
             max-width: 5px
-        .tools
-            max-width: 5px
+        .status
+            max-width: 35px
 
 
 #cars
     table
+        .grey
+            td
+                background: #777
         .selected
             td
                 background: #77C7DB
         .hovered
             td
                 background: #77C7DB
-        .grey
-            td
-                background: #777
 
-    width: 180px
+        width: 180px
     float: right
 
 #map
@@ -144,3 +151,7 @@ legend
     color: #3B4258
 .modal
     color: black
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px)
+    .map
+        width: 100%
