@@ -152,7 +152,11 @@
   work.on('click', '.decline', function() {
     $(this).hide();
     work.find('.accept').hide();
-    return work.find('.finish').show();
+    work.find('.finish').show();
+    myCar.set('status', 'ready');
+    myCar.save();
+    myOrder.set('status', 'ready');
+    return myOrder.save();
   });
 
   work.on('click', '.finish', function() {

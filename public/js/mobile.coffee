@@ -110,7 +110,11 @@ work.on 'click', '.decline', ->
   work.find('.accept').hide()
   work.find('.finish').show()
 
-  # @todo
+  myCar.set 'status', 'ready'
+  myCar.save()
+
+  myOrder.set 'status', 'ready'
+  myOrder.save()
 
 work.on 'click', '.finish', ->
   $(@).hide()
