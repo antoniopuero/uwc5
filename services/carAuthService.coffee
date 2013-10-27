@@ -8,9 +8,9 @@ class AuthError extends Error
 
 class carAuthService
     Errors:
-        CAR_EXIST: new AuthError("User with this email already exists")
-        CAR_NOT_EXIST: new AuthError("Wrong email")
-        WRONG_PASSWORD: new AuthError("Wrong password")
+        CAR_EXIST: new AuthError("Пользователь с таким email уже существует")
+        CAR_NOT_EXIST: new AuthError("Неверный email")
+        WRONG_PASSWORD: new AuthError("Неверный пароль")
 
     login: (driverName, password, callback) ->
         carService.getByDriverName driverName, (err, car) =>

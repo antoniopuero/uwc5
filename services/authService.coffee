@@ -7,9 +7,9 @@ class AuthError extends Error
 
 class authService
     Errors:
-        USER_EXISTS: new AuthError("User with this email already exists")
-        USER_NOT_EXISTS: new AuthError("Wrong email")
-        WRONG_PASSWORD: new AuthError("Wrong password")
+        USER_EXISTS: new AuthError("Пользователь с таким email уже существует")
+        USER_NOT_EXISTS: new AuthError("Неверный email")
+        WRONG_PASSWORD: new AuthError("Неверный пароль")
 
     login: (username, password, callback) ->
         userService.getUserByUsername username, (err, user) =>
