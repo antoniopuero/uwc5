@@ -3,7 +3,7 @@ uwc V (TaxiSky)
 Зависимости
 -----------
 1. Nodejs & NPM [офф.сайт](http://nodejs.org/)
-2. Mongodb (процесс установки и заруска на [офф.сайте](http://www.mongodb.org/)
+2. Mongodb (процесс установки и запуска на [офф.сайте](http://www.mongodb.org/)
 3. Nodemon (`npm install -g nodemon`)
 4. Grunt (`npm install -g grunt-cli grunt`)
 5. Coffee-script (`npm install -g coffee-script`)
