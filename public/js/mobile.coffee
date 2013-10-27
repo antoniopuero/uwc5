@@ -43,12 +43,8 @@ auth.on 'click', 'form a', ->
     myCar = car
     window.location.href = '#work'
 
-  false
-
-
 work.on 'click', '.online', ->
   if window.navigator.geolocation?
-    console.log myCar
     myCar.set 'status', 'ready'
     myCar.save
 
@@ -108,7 +104,8 @@ work.on 'click', '.accept', ->
 work.on 'click', '.decline', ->
   $(@).hide()
   work.find('.accept').hide()
-  work.find('.finish').show()
+  work.find('.finish').hide()
+  work.find('.order-info').hide()
 
   myCar.set 'status', 'ready'
   myCar.save()

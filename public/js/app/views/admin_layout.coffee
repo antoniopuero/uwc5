@@ -23,8 +23,7 @@ define 'adminLayout', [
         @orders.add new Order(data)
 
       App.socket.on 'order-update', (data) =>
-        order = @orders.get(data._id)
-        order.set data
+        @orders.add new Order(data), merge: true
 
       App.socket.on 'order-delete', (data) =>
         @orders.remove new Order(data)
@@ -33,8 +32,7 @@ define 'adminLayout', [
         @cars.add new Car(data)
 
       App.socket.on 'car-update', (data) =>
-        car = @cars.get(data._id)
-        car.set data
+        @cars.add new Car(data), merge: true
 
       App.socket.on 'car-delete', (data) =>
         @cars.remove new Car(data)
