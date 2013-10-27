@@ -96,12 +96,19 @@ define 'adminLayout', [
         status: 'busy'
         orderId: @selectedOrder.get '_id'
 
+      @selectedOrder = false
+      @selectedCar = false
+
+
     applyOrderToTopCar: (order) ->
       car = @cars.findWhere status: 'ready'
       unless car then return @errorProvider 'В данный момент нет свободных машин'
 
       @selectedOrder.set 'selected', false if @selectedOrder
       @selectedCar.set 'selected', false if @selectedCar
+
+      @selectedOrder = false
+      @selectedCar = false
 
       order.save
         selected: false
@@ -112,6 +119,7 @@ define 'adminLayout', [
         selected: false
         status: 'busy'
         orderId: order.get '_id'
+
 
     renderCarOrder: (car) ->
       order = @orders.get car.get('orderId')
