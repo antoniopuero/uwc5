@@ -79,7 +79,7 @@ define [
             (modelData.path = @retrievePath distanceResult.routes[0].overview_path) &&
             (modelData.distance = distanceResult.routes[0].legs[0].distance.value) &&
             (modelData.price = @retrievePrice(modelData.distance))
-              @errorProvider 'Can not buid rout between points'
+              @errorProvider 'Can not build rout between points'
               return
           else
             @model.set modelData

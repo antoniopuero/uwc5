@@ -17,6 +17,7 @@ module.exports = (grunt) ->
                 files:
                     'public/css/app.min.css' : [
                         'public/js/components/bootstrap.css/css/bootstrap.css',
+                        'public/js/components/bootstrap-timepicker/css/bootstrap-timepicker.css',
                         'public/css/main.css'
                     ]
         requirejs:
